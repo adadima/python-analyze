@@ -5,7 +5,9 @@ This repository will eventually contain source code to analyze short Python prog
 ## Task 1
 - Create a small repository (~1000 codes) of Python programs attempting student submissions.
 
-Datasets like these should be helpful to get you started https://www.itshared.org/2015/12/codeforces-submissions-dataset-for.html
+Datasets like these should be helpful to get you started.
+
+https://www.itshared.org/2015/12/codeforces-submissions-dataset-for.html
 
 - Write a script such that for every program in your repository, you replace *every* existing function call with *foo()*.
 For instance, if your program reads -
