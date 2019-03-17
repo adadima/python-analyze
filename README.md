@@ -41,3 +41,10 @@ Are there special/edge cases to consider? What challenges can you face while att
 Just setting this up can be a little painful and time consuming. Wade through it.
 - Keep updating this README with instructions which will help with the reproducability of your work/results.
 - Constantly communicate in case you are stuck, have questions.
+
+## Goals
+- Have a working prototype
+- Assess how well you scope and assess the different components involved which will solve this problem
+- Assess how you divide your labor into the components you identify. Remember, there's a time budget of ~2 days.
+- Assess how you wiggle out of situations when you're stuck.
+- Assess how well you communicate and let all stakeholders know of your progress.
