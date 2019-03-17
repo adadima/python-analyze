@@ -24,6 +24,7 @@ def count_list_repeats(li):
     foo(li, x)
     ...
 ```
+Are there special/edge cases to consider? What challenges can you face while attempting to solve this?
 
 - Hint: Do not be tempted to use a regular expression/grep like strategy to make these replacements. Look up what abstract syntax trees of programs are. Modify them to achieve this functionality.
 
@@ -39,4 +40,4 @@ def count_list_repeats(li):
 - Have a `./test/` folder to write out unit tests for key functions. Look up the `unittest` package in Python if you haven't used it before.
 Just setting this up can be a little painful and time consuming. Wade through it.
 - Keep updating this README with instructions which will help with the reproducability of your work/results.
-
+- Constantly communicate in case you are stuck, have questions.
