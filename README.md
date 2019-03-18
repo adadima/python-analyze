@@ -30,6 +30,8 @@ Are there special/edge cases to consider? What challenges can you face while att
 
 - Have at least one plot, or one table which summarizes relevant statistics from the dataset. To begin with, for the task mentioned above, ask yourself what statistics you think are even relevant and would want answered?
 
+- Evaluation -- How will you evalute whether your algorithm/strategy covers all cases? It could well be we're unsure of this no matter what we do.
+
 ## Instructions
 - Fork this repo and work on a local copy. Make it a habit to push changes upstream to this repo as frequently as feasible.
 - Use `Python3.7+` for this work.
