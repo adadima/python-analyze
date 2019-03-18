@@ -38,9 +38,9 @@ Are there special/edge cases to consider? What challenges can you face while att
 - We workship the lords of reproducability of results. Use `conda` to create an environment and set up your repository. 
 - Use a `.gitignore` file to ensure you are not adding junk files to the repo.
 - Have a `./src/` folder containing the source.
-- Have a `./env` folder containing the Conda environment file you create for this project.
+- Have a `./env/` folder containing the Conda environment file you create for this project.
 - Have a `./data/` folder containing all the data your source accesses.
-- Have a `./test/` folder to write out unit tests for key functions. Look up the `unittest` package in Python if you haven't used it before.
+- Have a `./tests/` folder to write out unit tests for key functions. Look up the `unittest` package in Python if you haven't used it before.
 - Keep updating this README with instructions which will help with the reproducability of your work/results.
 
 Setting these up can be a little painful and time consuming. Wade through it.
