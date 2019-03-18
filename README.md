@@ -47,7 +47,7 @@ Setting these up can be a little painful and time consuming. Wade through it.
 
 ## Goals
 - Have a working prototype
-- Assess how well you scope and assess the different components involved which will solve this problem
+- (We will) assess how well you scope and assess the different components involved which will solve this problem
 - Assess how you divide your labor into the components you identify. Remember, there's a time budget of ~2 days.
 - Assess how you wiggle out of situations when you're stuck.
 - Assess how well you communicate and let all stakeholders know of your progress.
