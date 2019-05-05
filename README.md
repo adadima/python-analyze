@@ -43,7 +43,7 @@ Are there special/edge cases to consider? What challenges can you face while att
 - Have a `./tests/` folder to write out unit tests for key functions. Look up the `unittest` package in Python if you haven't used it before.
 - Keep updating this README with instructions which will help with the reproducability of your work/results.
 
-Setting these up can be a little painful and time consuming. Wade through it.
+Setting these up can be a little painful and time consuming. Wade through it. Focus on getting the core functionality right first, though.
 
 
 
