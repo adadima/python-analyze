@@ -33,7 +33,7 @@ Are there special/edge cases to consider? What challenges can you face while att
 - Evaluation -- How will you evalute whether your algorithm/strategy covers all cases? It could well be we're unsure of this no matter what we do.
 
 ## Instructions
-- Fork this repo and work on a local copy. Make it a habit to push changes upstream to this repo as frequently as feasible.
+- Do not fork this repo. Work on a local copy. Make it a habit to push changes upstream to your repo as frequently as feasible.
 - Use `Python3.7+` for this work.
 - We workship the lords of reproducability of results. Use `conda` to create an environment and set up your repository. 
 - Use a `.gitignore` file to ensure you are not adding junk files to the repo.
