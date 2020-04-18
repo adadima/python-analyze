@@ -53,3 +53,15 @@ Setting these up can be a little painful and time consuming. Wade through it. Fo
 - Assess how you divide your labor into the components you identify. Remember, there's a time budget of ~2 days.
 - Assess how you wiggle out of situations when you're stuck.
 - Assess how well you communicate and let all stakeholders know of your progress.
+
+## Source code data:
+
+Python source codes have been retrieved from here: https://www.itshared.org/2015/12/codeforces-submissions-dataset-for.html
+This resource provides submissions from the Codeforces website in the form of a MySQL back up file. 
+
+Script './src/data_filer.py' processes this data by connecting to a local MySQL database server, fetching the first 1000 Python source codes, and writing them to individual files, each named after the submission id, in the './data' folder. You are welcome to use these files, or run the './src/data_filer.py' in order to generate new files, perhaps consisting of a different subset of the Python submissions. 
+
+To run the data filter script, you will need to first set up MySQL on your system and import the './data/dump.sql' back up file in order to create your own local submissions database. Then, you will need to create a file called 'db_cred.py' inside the './src' directory that contains the following credentials to access the database:
+    - a 'USER' global variable, as a string, which is the username to use for connecting to the MySQL server
+    - a 'PASSWORD' global variable, also as a string, which is the password associated with the above user.
+This information will be imported by the data filter script in order to connect to your local database.
