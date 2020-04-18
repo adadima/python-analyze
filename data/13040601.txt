@@ -1,0 +1,33 @@
+def f(n):
+    if n == 0:
+        return b
+    p = 1
+    res = -1
+    while p * p <= n:
+        if n % p == 0:
+            q = p // b
+            while (n * q // p) % 2 == 1 and q > 0:
+                q -= 1
+            if q != 0 and (res == -1 or p / q < res):
+                res = p / q
+            old_p = p
+            p = n // p
+            q = p // b
+            while n * q // p % 2 == 1 and q > 0:
+                q -= 1           
+            if q != 0 and (res == -1 or p / q < res):
+                res = p / q
+            p = old_p          
+        p += 1
+    return res
+    
+    
+a, b = map(int, input().split())
+ob1 = a - b
+ob2 = a + b
+r1 = f(ob1)
+r2 = f(ob2)
+if r1 < r2 or r2 == -1:
+    print(r1)
+else:
+    print(r2)

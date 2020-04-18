@@ -1,0 +1,13 @@
+counter = 0
+amount = int(input())
+votes = map(int, input().split())
+vote_list = list(votes)
+bear = vote_list[0]
+del vote_list[0]
+vote_list.sort(reverse=True)
+while bear <= vote_list[0]:
+    bear+=1
+    vote_list[0]-=1
+    counter+=1
+    vote_list.sort(reverse=True)
+print(counter)

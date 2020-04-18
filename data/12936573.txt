@@ -1,0 +1,25 @@
+__author__ = 'dwliv_000'
+def isPrime(n):
+    for i in range(2,int(n**0.5)+1):
+        if n%i==0:
+            return False
+
+    return True
+n=int(input())
+c={}
+c[1]=[]
+c[2]=[2]
+c[3]=[2,3]
+c[4]=[2,3,4]
+c[5]=[2,4,3,5]
+k=6
+while k<=n:
+    t=[]
+    for j in range(2,k):
+        if(j%k==0)and(isPrime(j)):
+            t.append(j)
+    c[k]=t
+    k=k+1
+print(len(c[n]))
+for j in range(len(c[n])):
+    print(c[n][j],end=' ')

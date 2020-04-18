@@ -1,0 +1,45 @@
+n, m = list(map(int, input().split()))
+
+warriors = []
+for i in range(n):
+    warriors.append([])
+
+for i in range(m):
+    ai, bi = list(map(int, input().split()))
+    ai -= 1
+    bi -= 1
+    warriors[ai].append(bi)
+    warriors[bi].append(ai)
+
+pop = -1
+
+for i in range(n):
+    li = len(warriors[i])
+    if li < 2:
+        continue
+
+    pop1 = li - 2
+    
+    for j in range(li):
+        cut1 = sorted(warriors[i][j:])
+
+        friend1 = cut1[0]
+        pop2 = len(warriors[friend1]) - 2
+        
+        for k in range(len(cut1)-1):
+            cut2 = cut1[k+1:]
+            
+            friend2 = cut2[0]
+
+            friends1 = friend2 in warriors[friend1]
+            friends2 = friend1 in warriors[friend2]
+            if not (friends1 and friends2):
+                continue
+            
+            pop3 = len(warriors[friend2]) - 2
+            popnow = pop1 + pop2 + pop3
+            
+            if popnow < pop or pop == -1:
+                pop = popnow
+
+print(pop)

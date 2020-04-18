@@ -1,0 +1,10 @@
+import math
+input()
+v = list(map(int , input().split()))
+x=v[0]
+ans=0
+if(x<(sorted(v[1:])[0])):
+ ans = ((sorted(v[1:])[0]+x)/2+1)
+elif(x==sorted(v[1:])[0]) :
+    ans=1
+print(math.ceil(ans))

@@ -1,0 +1,41 @@
+n, k, X = map(int, input().split())
+a = list(map(int, input().split()))
+
+bits = [0 for x in range(0, 70)]
+for x in a:
+    bitsOfX = bin(x)[2:]
+    bitsOfX = [int(c) for c in reversed(bitsOfX)]
+
+    # print bitsOfX
+
+    for i in range(0, len(bitsOfX)):
+        bits[i] += bitsOfX[i]
+
+
+# print bits
+bestOrSum = sum([2**i for i in range(0, 70) if bits[i] > 0])
+
+for x in a:
+    bitsOfX = bin(x)[2:]
+    bitsOfX = [int(c) for c in reversed(bitsOfX)]
+
+    # I want to multiply x as many times as I can
+    newX = x * (X**k)
+
+    bitsOfNewX = bin(newX)[2:]
+    bitsOfNewX = [int(c) for c in reversed(bitsOfNewX)]
+
+
+    for i in range(0, len(bitsOfX)):    # I remove x from the original OR sum
+        bits[i] -= bitsOfX[i]
+    for i in range(0, len(bitsOfNewX)): # and I add x multiplied passionately
+        bits[i] += bitsOfNewX[i]
+
+    bestOrSum = max(bestOrSum, sum([2**i for i in range(0, 70) if bits[i]]))
+
+    for i in range(0, len(bitsOfX)):    # revert changes made previously
+        bits[i] += bitsOfX[i]
+    for i in range(0, len(bitsOfNewX)):
+        bits[i] -= bitsOfNewX[i]
+
+print(bestOrSum)

@@ -1,0 +1,4 @@
+import math
+n=int(input())
+p=str(bin(n))
+print(p.count('1'))

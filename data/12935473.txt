@@ -1,0 +1,14 @@
+primes = [2,3,5,7,11,13,17,19,23,29,31,37]
+n = int(input())
+x = int(n**0.5)
+i = 0
+a = []
+while primes[i] <= n:
+    j = 1
+    while primes[i]**j <= n:
+        a.append(primes[i]**j)
+        j += 1
+    i += 1
+print(len(a))
+for i in a:
+    print(i, end=' ')

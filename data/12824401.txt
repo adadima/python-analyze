@@ -1,0 +1,13 @@
+n, nums = input(), [int(x) for x in input().split()]
+votes = sorted(nums[1:])
+
+count = 0
+
+while max(votes) > nums[0]:
+ for x in range(len(votes)):
+  if votes[x] >= nums[0]:
+   votes[x] -= 1
+   nums[0] += 1
+   count += 1
+
+print(count)

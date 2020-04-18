@@ -1,0 +1,44 @@
+import copy
+
+# knight[id, power]
+# horse[ownerId, power]
+nq = input().split(' ')
+n = int(nq[0])
+q = int(nq[1])
+kInput = input().split(' ')
+hInput = input().split(' ')
+knight_list = []
+horse_list = []
+
+for i in range(1, n+1):
+ knight_list.append([i, int(kInput[i-1])])
+ horse_list.append([i, int(hInput[i-1])])
+
+knight_list_copy = sorted(knight_list, key=lambda k:k[1], reverse=True)
+horse_list_sorted = sorted(horse_list, key=lambda h:h[1], reverse=True)
+
+while q>0:
+ q -= 1
+ swAB = input().split(' ')
+ a = int(swAB[0])
+ b = int(swAB[1])
+
+ # swap owner id
+ for i in range(0, n):
+  if knight_list_copy[i][0] == a:
+   knight_list_copy[i][0] = b
+  elif knight_list_copy[i][0] == b:
+   knight_list_copy[i][0] = a
+
+ # shallow copy
+ horse_list_copy = copy.copy(horse_list_sorted)
+ power_total = 0
+ for i in range(0, n):
+  if(horse_list_copy[0][0] != knight_list_copy[i][0]):
+   power_total += horse_list_copy[0][1] * knight_list_copy[i][1]
+   horse_list_copy.pop(0)
+  else:
+   power_total += horse_list_copy[1][1] * knight_list_copy[i][1]
+   horse_list_copy.pop(1)
+
+ print(power_total)

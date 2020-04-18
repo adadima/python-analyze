@@ -1,0 +1,26 @@
+def main():
+    input()
+    l = list(map(int, input().split()))
+    x = x0 = l.pop(0)
+    y = max(l)
+    c = [0] * (y + 1)
+    for t in l:
+        c[t] += 1
+    c[0] = 1
+    while True:
+        while not c[y]:
+            y -= 1
+        if y < x:
+            break
+        t = c[y]
+        if x + t > y:
+            x = y + 1
+            break
+        y -= 1
+        c[y] += t
+        x += t
+    print(x - x0)
+
+
+if __name__ == '__main__':
+    main()

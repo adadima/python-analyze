@@ -1,0 +1,17 @@
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+b = [False] * m
+for i in range(n):
+    a[i] %= m
+for i in range(n):
+    b2 = b[:]
+    for j in range(1, m):
+        if b[j] == True:
+            b2[(j + a[i]) % m] = True
+    b2[a[i]] = True
+    b = b2[:]
+if b[0]:
+    print('YES')
+else:
+    print('NO')
+    

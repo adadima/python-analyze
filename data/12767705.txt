@@ -1,0 +1,43 @@
+N = int(input())
+x = [int(i) for i in input().split()]
+#import random
+#x = [random.randint(0, 1000000000) for _ in range(N)]
+
+#def des(x):
+ #   t = [0 for _ in range(len(x))]
+  #  while not all(p == 0 for t in x):
+   #     for i in range(1, len(x) - 1):
+    #        if x[i] == 0:
+     #           pass
+      #      else:
+       #         t[i] = internal(x[i-1], x[i], x[i+1])
+def internal(a, b, c):
+    return max(min(b-1, min(a, c)), 0)
+
+iters = 0
+#print(x)
+while len(x) > 0:
+    t = []
+    for i in range(1, len(x) - 1):
+        if x[i] == 0:
+            pass
+        else:
+            p = internal(x[i-1], x[i], x[i+1])
+            if p > 0 or len(t) > 0:
+                t.append(p)
+    iters += 1
+    x = t
+    #print(x)
+
+print(iters)
+exit()
+
+
+
+iters = 0
+while not all(t == 0 for t in x):
+    x = des(x)
+    print(x)
+    iters += 1
+
+print(iters)

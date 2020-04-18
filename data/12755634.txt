@@ -1,0 +1,17 @@
+n = int(input())
+a = list(map(int, input().split()))
+limak = a[0]
+a.sort()
+b = []
+
+for i in range(n):
+    if a[i] == limak:
+        b = a[i+1:]
+        break
+r = 0
+for i in range(len(b)):
+    if b[i] >= limak:
+        r += (b[i] - limak) // 2 + 1
+        limak += r
+
+print(r)

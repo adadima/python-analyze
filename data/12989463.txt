@@ -1,0 +1,14 @@
+n, m = map(int, input().split())
+a = list(map(lambda x: x%m, map(int, input().split())))
+
+possible = set([])
+for el in a:
+    new = set([el])
+    for candidate in possible:
+       new.add((candidate + el)%m)
+
+    possible |= new
+    if 0 in possible:
+        print("YES")
+        exit()
+print("NO")

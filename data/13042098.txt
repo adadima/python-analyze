@@ -1,0 +1,7 @@
+# -*- coding:utf-8 -*-
+# Codeforces Round #320 Div.2
+# D."Or" Game
+n,k,x = map(int,input().split())
+A = list(map(int,input().split()))
+ans = sum(A) + max(A)*(x**k) - max(A)
+print(ans)

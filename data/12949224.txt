@@ -1,0 +1,11 @@
+n=int(input())
+a=[0]*(n+1)
+b=[]
+for i in range(2,n+1):
+  if a[i]: continue
+  ii=1
+  while ii*i<=n: ii*=i; b+=[ii]
+  j=i   
+  while j<=n: a[j]=1; j+=i
+print(len(b))
+print(' '.join(map(str,b)))

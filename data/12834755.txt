@@ -1,0 +1,31 @@
+import sys
+n, p = [int(e) for e in sys.stdin.readline().strip().split()]
+w = [[False]*n for i in range(n)]
+for i in range(p):
+    pair = [int(e)-1 for e in sys.stdin.readline().strip().split()]
+    w[pair[0]][pair[1]] = True
+    w[pair[1]][pair[0]] = True
+#for l in w: print(l)
+trios = set()
+for i in range(n):
+    m = w[i]
+    if m.count(True) < 2:
+        continue
+    for r in range(n):
+        if m[r] == True:
+            for f in range(n-i):
+                if i == r or r == f or f == i:
+                    continue
+                if w[f][i] == True and w[i][r] == True and w[r][f] == True:
+                    trio = [i, r, f]
+                    trio.sort()
+                    trios.add(" ".join([str(e) for e in trio]))
+    #print(trios)
+
+minrecog = -1
+for trio in trios:
+
+    recognition = sum([w[int(e)].count(True)-2 for e in trio.split()])
+    if recognition < minrecog or minrecog == -1:
+        minrecog = recognition
+print(minrecog)

@@ -1,0 +1,40 @@
+__author__ = 'dwliv_000'
+(n,m)=(int(i) for i in input().split())
+c=[int(i) for i in  input().split()]
+z={}
+b=0
+for i in range(n):
+    if c[i]%m in z.keys():
+        z[c[i]%m]=z[c[i]%m]+1
+    else:
+
+        z[c[i]%m]=1
+
+q=0
+for i in z.keys():
+    q=q+z[i]*i
+b=0
+if(q%m==0):
+    b=1
+while q>m:
+    for i in sorted(list(z.keys())):
+        if(q%m in z.keys()):
+            z[q%m]=z[q%m]-1
+            if z[q%m]==0:
+                del z[q%m]
+            q=q-q%m
+            break
+        else:
+            if(i in z.keys()):
+                z[i]=z[i]-1
+                if(z[i]==0):
+                    del z[i]
+                q=q-i
+                break
+    if(q%m==0):
+        b=1
+        break
+if b==0:
+    print('NO')
+else:
+    print('YES')

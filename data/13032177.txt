@@ -1,0 +1,17 @@
+n=int(input())
+a={}
+for i in range(2*n-1):
+    b=list(int(i) for i in input().split())
+    for j in range(len(b)):
+        a[(i+2,j+1)]=b[j]
+p=sorted(a,key=lambda x:a[x],reverse=True)
+n=2*n
+while(n>=0):
+    x=p[0][0]
+    y=p[0][1]
+    print(x,end=' ')
+    print(y,end=' ')
+    for i in p:
+        if (x in i) or (y in i):
+            p.remove(i)
+            n-=1

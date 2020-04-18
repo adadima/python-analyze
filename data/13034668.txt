@@ -1,0 +1,34 @@
+import sys
+
+lines = sys.stdin.read().split("\n")
+# n, k = map(int, lines[0].split(" "))
+# n = int(lines[0])
+# nums = list(map(int, lines[1].split(" ")))
+
+n = int(lines[0])
+pic = []
+pica = []
+for i in range(1, 2 * n):
+    pic.append(list(map(int, lines[i].split(" "))))
+res = dict()
+for i in range(n):
+    pica = [(max(pic[j]), j) for j in range(2 * n - 1)]
+    best, j = max(pica)
+    k = pic[j].index(best)
+    res[j + 2] = k + 1
+    res[k + 1] = j + 2
+    # a, b = max(j + 2, k + 1), min(j + 2, k + 1)
+    # res.append(a)
+    # res.append(b)
+    pic[j] = [0]
+    if k > 0:
+        pic[k - 1] = [0]
+    a = j + 1
+    for n1 in range(2 * n - 1):
+        if pic[n1] != [0] and n1 >= a:
+            pic[n1][a] = 0
+    a = k
+    for n1 in range(2 * n - 1):
+        if pic[n1] != [0] and n1 >= a:
+            pic[n1][a] = 0
+print(" ".join(map(lambda i: str(res[i]), range(1, 2 * n + 1))))

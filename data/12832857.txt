@@ -1,0 +1,26 @@
+n = int(input())
+score = [int(x) for x in input().split()]
+value = [0 for x in range(n)]
+removed = []
+
+for x in reversed(range(n)):
+    if x == n - 1:
+        value[x] = score[x] * (x + 1)
+    else:
+        b = removed != [] and x + 1 == removed[len(removed) - 1]
+        value[x] = value[x + 1] + (x + 1) * score[x] - (x + 1 + b) * score[x + 1]
+    if value[x] < 0:
+        removed.append(x)
+
+for x in reversed(range(n)):
+    if removed != [] and x == removed[0]:
+        score = score[:x] + score[x + 1:]
+        removed.remove(x)
+
+def product(a, b):
+    return a * b
+
+def calcScore(score):
+    return sum(map(product, [x + 1 for x in range(len(score))], score))
+
+print(calcScore(score))

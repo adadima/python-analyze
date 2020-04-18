@@ -1,0 +1,20 @@
+#import sys
+#sys.stdin = open("python/in", "r")
+
+n = int(input())
+arr = [int (i) for i in input().split(" ")]
+lim = arr.pop(0)
+
+ans = 0
+if lim <= max(arr):
+    for i in range(lim+1, 1000):
+        sum = 0
+        for j in arr:
+            sum += max(0, j-i)
+        if i - lim > sum :
+            ans = i - lim
+            break
+        
+print (ans)
+    
+    

@@ -1,0 +1,5 @@
+def f(n):
+    return 16 * n**3 - 78 * n**2 + 136 * n - 69
+
+
+print(f(int(input())))

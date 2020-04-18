@@ -1,0 +1,11 @@
+def main():
+    n, k , x = map(int, input().split())
+    arr = [int(x) for x in input().split()]
+    q = arr.index(max(arr))
+    for i in range(k):
+        arr[q] *= x
+    ans = arr[0]
+    for i in range(1, n):
+        ans = ans | arr[i]
+    print(ans)
+main()

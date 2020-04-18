@@ -1,0 +1,7 @@
+cnt = 0
+n,m = map(int,input().split())
+a = list(map(int,input().split()))
+if sum(a)%m in a:
+    print('YES')
+    quit()
+print('NO')

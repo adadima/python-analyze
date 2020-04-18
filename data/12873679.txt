@@ -1,0 +1,11 @@
+if __name__ == '__main__':
+    n = int(input())
+    a = list(map(int, input().split()))
+    
+    ct, m, best = 0, a.pop(0), max(a)
+    while m <= best:
+        m += 1
+        ct += 1
+        a[a.index(best)] -= 1
+        best = max(a)
+    print(ct)

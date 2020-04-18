@@ -1,0 +1,11 @@
+eps = 10 ** -10
+a, b = map(int, input().split())
+if b > a:
+    print(-1)
+else:
+    y = (a + b) / 2
+    cnt = 0
+    while (y + eps > b) and (cnt < 100):
+        y /= 2
+        cnt += 1
+    print(y * 2)

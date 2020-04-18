@@ -1,0 +1,36 @@
+import math
+n=int(input())
+tt=n
+def prime(n):
+    numbers = set(range(n, 1, -1))
+    primes = []
+    while numbers:
+        p = numbers.pop()
+        primes.append(p)
+        numbers.difference_update(set(range(p*2, n+1, p)))
+    return primes
+
+
+s=prime(n)
+
+i=0
+if len(s)==0:
+    print(tt)
+    print(tt)
+
+else:
+    ans=0
+    array=[]
+    for prime in s:
+        while tt%prime==0:
+            array.append(prime)
+            prime=prime*prime
+            ans+=1
+        if prime<=tt:
+            array.append(prime)
+        
+    print(ans)        
+    for i in array:
+        print(i,end=' ')
+    
+    

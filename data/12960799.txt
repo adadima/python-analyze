@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <vector>
+using namespace std;
+ 
+int main()
+{
+ const int size=10;
+ int n=0;
+ scanf("%d",&n);
+ vector<int> t[size][size];
+ for(int i=1;i<=n;i++) {
+  int a,b;
+  scanf("%d %d",&a,&b);
+  int x=a/size;
+  int y=b/size;
+  if(x==size) x=size-1;
+  if(y==size) y=size-1;
+  t[x][y].push_back(i);
+ }
+ for(int i=0;i<size;i++) {
+  if(i%2==0) {
+   for(int j=0;j<size;j++) {
+    for(unsigned int k=0;k<t[i][j].size();k++) {
+     printf("%d ",t[i][j][k]);
+    }
+   }
+  }
+  else {
+   for(int j=size-1;j>=0;j--) {
+    for(unsigned int k=0;k<t[i][j].size();k++) {
+     printf("%d ",t[i][j][k]);
+    }
+   }
+  }
+ }
+ return(0);
+}

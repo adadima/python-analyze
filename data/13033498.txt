@@ -1,0 +1,21 @@
+b = int(input())
+b1 = b
+l = []
+l.append(b1)
+while b1 != 1:
+ if b1 % 2 == 0:
+  l.append(b1//2)
+  b1 = b1//2
+ else:
+  l.append(b1//2)
+  b1 = b1//2
+l.reverse()
+#print(l)
+bact = 1
+count =1 
+for i in range(0 , len(l)):
+ if(bact != l[i]):
+  bact += 1
+  count +=1
+ bact = bact * 2
+print(count) 

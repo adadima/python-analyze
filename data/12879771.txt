@@ -1,0 +1,21 @@
+from collections import defaultdict
+
+if __name__ == '__main__':
+    n, m = map(int, input().split())
+    g = defaultdict(list)
+    for _ in range(m):
+        a,b = map(int, input().split())
+        g[a].append(b)
+        g[b].append(a)
+    
+    best = float("Inf")
+    for i in g.keys():
+        for j in g.keys():
+            if j in g[i]:
+                for k in g.keys():
+                    if k in g[i]:
+                        il = [a for a in g[i] if a not in [j,k]]
+                        jl = [a for a in g[j] if a not in [i,k]]
+                        kl = [a for a in g[k] if a not in [j,i]]
+                        best = min(best, len(il + jl + kl))
+    print(best if best > 0 and best != float("Inf") else -1)

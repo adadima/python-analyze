@@ -1,0 +1,9 @@
+n = int(input())
+
+result = 6
+for i in range(2, n+1):
+    result = result * (((4 * i) % 1000000007 + 2) % 1000000007) % 1000000007
+    result //= i + 1
+
+
+print(result - 1)

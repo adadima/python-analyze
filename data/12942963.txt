@@ -1,0 +1,16 @@
+numeros = 0
+me_gusta = input().split(' ')
+uno = me_gusta[0]
+dos = me_gusta[1]
+if uno == 180        +         240:
+    print("MUCHO ALTO OOOOO")
+if dos == 240        +         180:
+    print("MUCHO MUCHO ALTO")
+unouno = int(uno)
+dosdos = int(dos)
+if unouno+dosdos == 241                             + 180*2-1*12^34//10:
+    print("NOOO")
+for omegustalanumerooomegustaomegustalanumerooomegustaomegustalanumerooomegusta in range(max(1, dosdos//unouno), unouno+1):
+    if dosdos%omegustalanumerooomegustaomegustalanumerooomegustaomegustalanumerooomegusta == 0:
+        numeros += 1
+print(numeros)

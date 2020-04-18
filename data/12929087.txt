@@ -1,0 +1,14 @@
+def count_divs(n, k):
+    i = 1
+    ans = 0
+    while i ** 2 < n:
+        if n%i == 0 and i <= k and n // i <= k:
+            ans += 1
+        i += 1
+    ans *= 2
+    if i ** 2 == n:
+        ans += 1
+    return ans
+
+n, x = map(int, input().split())
+print(count_divs(x, n))

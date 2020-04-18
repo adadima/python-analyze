@@ -1,0 +1,14 @@
+l = int(input())
+votes = list(map(int, input().split()))
+vneed = 0
+
+while True:
+    vmax = sorted(votes, reverse=True)[0]
+    vlim = votes[0]
+    if vlim >= vmax and votes.count(vlim) == 1:
+        break
+    votes[votes[1:].index(vmax)+1] -= 1
+    votes[0] += 1
+    vneed += 1
+
+print(vneed)

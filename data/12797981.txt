@@ -1,0 +1,41 @@
+import math
+import string
+
+# find the index which indicates the maximum 
+def find_max_index(_list):
+    i = 0
+    l = len(_list)
+    maximum = 0
+    max_index = 0
+    while i < l:
+        if maximum < _list[i]:
+            maximum = _list[i]
+            max_index = i
+        i = i + 1
+    return max_index
+
+# process input
+n = int(input())
+input_str = input()
+input_list = input_str.split(' ')
+vote = []
+for s in input_list:
+    vote.append(int(s))
+
+# reduce data size
+v = vote[0]
+r = []
+for i in vote[1:]:
+    if i > v:
+        r.append(i)
+
+
+stolen = 0
+# keep stealing 1 vote from current winner
+while v <= max(r):
+    i = find_max_index(r)
+    r[i] = r[i] - 1
+    v = v + 1
+    stolen = stolen + 1
+
+print(stolen)

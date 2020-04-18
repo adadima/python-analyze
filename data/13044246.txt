@@ -1,0 +1,10 @@
+x = int(input())
+n = ""
+a=int(0)
+while x > 0:
+    y = str(x % 2)
+    n = y + n
+for i in str(n):
+    if i=='1':
+        a=a+1
+print(a)

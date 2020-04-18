@@ -1,0 +1,28 @@
+import sys
+n = int(input())
+list2 = input().split()
+list = []
+for item in list2:
+    list.append(int(item))
+#for line in sys.stdin:
+#   list = [int(i) for i in line.split()]
+vote = list[0]
+del list[0]
+list.sort()
+i = 0
+while list[i] < vote:
+    i += 1
+    if i == len(list):
+        print(0)
+        exit()
+list = list[i:len(list)]
+s = sum(list)+vote
+d = len(list)+1
+avg = int(s/d)
+if (s%d) == 0:
+    ans = 1
+else:
+    ans = 0
+for num in list:
+    ans += (num-avg)
+print (ans)

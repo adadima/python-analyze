@@ -1,0 +1,16 @@
+from math import log
+ans = 0
+n = int(input())
+prost = set(i for i in range(2, n + 1))
+for i in range(2, (int(n ** 0.5)) + 2):
+    if i in prost:
+        for k in range(i * 2, n + 1, i):
+            prost.discard(k)    
+    
+for i in prost:
+    ans += int(log(n, i))
+print(ans)
+for i in prost:
+    while n >= i:
+        print(i, end=' ')
+        i = i * i

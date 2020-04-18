@@ -1,0 +1,8 @@
+n,m=map(int,input().split())
+void=[x for x in range(1,n+1)]
+kil=0
+for i in range(1,n+1):
+    for j in range(1,n+1):
+        if i*j==m:
+            kil+=1
+print(kil)

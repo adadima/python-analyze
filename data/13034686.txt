@@ -1,0 +1,22 @@
+import math
+Aantal = int(input())
+machten2 = []
+x = 2
+i = 0
+bacterie = 0
+
+while x <= Aantal:
+    machten2.append(x)
+    x = 2*x
+    i = len(machten2)
+
+while Aantal >= 2:
+    while Aantal - machten2[i-1] < 0:
+        i = i - 1
+    Aantal = Aantal - machten2[i-1]
+    bacterie += 1
+        
+if Aantal == 1:
+    print (bacterie +1)
+else:
+    print (bacterie)

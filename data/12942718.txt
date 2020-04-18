@@ -1,0 +1,9 @@
+cnt = 0
+n,x = map(int,input().split())
+for i in range(2,n+1):
+    if x%i==0 and x/i<=n:
+        cnt+=1
+        #print(i)
+if x<=n:
+    cnt+=1
+print(cnt)

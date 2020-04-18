@@ -1,0 +1,10 @@
+def bot(r, b):
+    w = 0; q = 0
+    if r > 0:
+        w = bot(r - 1, b)
+    if b > 0:
+        q = bot(r, b - 1)
+    return w + q + 1
+
+n = int(input())
+print(bot(n, n))

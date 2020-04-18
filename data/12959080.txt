@@ -1,0 +1,7 @@
+n=int(input())
+if n<10000:
+ s=""
+ for i in range(n):
+  s+=str(i+1)+" "
+ print(s)
+else:print("oups")

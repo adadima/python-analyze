@@ -1,0 +1,20 @@
+#
+def findmaxindex(l):
+ max1 = -1
+ for i in range(0,len(l)):
+  if(l[i] > max1):
+   max1 = l[i]
+   index = i
+ return index
+ 
+n ,k ,x = map(int, input().split(" "))
+l = [int(i) for i in input().split(" ")]
+index = findmaxindex(l)
+i = 0 
+while i != k:
+ i+=1
+ l[index] = l[index] * x
+output = 0
+for i in range(0 , len(l)):
+ output = output | l[i]
+print(output)

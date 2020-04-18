@@ -1,0 +1,50 @@
+def isPrime(n):
+    for i in range(2,n//2 + 1):
+        if n%i == 0:
+            return False
+    return True
+
+n = int(input())
+
+qcount = 0
+check = 2
+nlist = []
+qlist = []
+
+for i in range(n+1):
+    nlist.append(0)
+
+nlist[0] = 1
+nlist[1] = 1
+
+while (check < n+1):
+    p = 1
+    i = 2
+    while (isPrime(i) != True or nlist[i] != 0) and i<=n:
+        if (isPrime(i) == False and nlist[i] == 0):
+            nlist[i] = 1
+            check += 1
+        i += 1
+        
+    while (i**p <= n):
+        nlist[i**p] = 2
+        qlist.append(i**p)
+        p += 1
+        qcount += 1
+        check += 1
+
+print(qcount)
+for i in (qlist):
+    print(i,end = " ")
+
+
+
+
+
+    
+
+
+
+
+    
+    

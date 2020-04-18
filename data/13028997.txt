@@ -1,0 +1,10 @@
+x=int(input())
+i=1
+while(i<=x):
+    i*=2
+if i>x:
+    i=int(i/2)
+if i==x:
+    print(1)
+else:
+    print(1+(x-i))

@@ -1,0 +1,9 @@
+from math import*
+n=int(input())
+while not(n<=2):
+    n=n/2
+
+if n==2:
+    print(1)
+else:
+    print(ceil(n))

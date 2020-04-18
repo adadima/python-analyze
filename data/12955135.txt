@@ -1,0 +1,14 @@
+def main():
+    n, m = map(int, input().split())
+    top, res = int(m ** .5), 0
+    if top <= n and top * top == m:
+        res = 1
+        top -= 1
+    for x in range((m + n - 1) // n, min(top, n) + 1):
+        if not m % x:
+            res += 2
+    print(res)
+
+
+if __name__ == '__main__':
+    main()

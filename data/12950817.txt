@@ -1,0 +1,14 @@
+n, m = map(int, input().split())
+
+seen = set()
+for a in map(int, input().split()):
+    seen.add(a % m)
+    new = set()
+    for b in seen:
+        new.add((a+b) % m)
+    seen |= new
+    if 0 in seen:
+        print('YES')
+        break
+else:
+    print('NO')

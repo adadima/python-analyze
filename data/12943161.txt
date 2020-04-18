@@ -1,0 +1,23 @@
+import itertools
+
+def giveMeDivsor(num):
+ i = num
+ alist = []
+ while i>0:
+  if num%i==0:
+   alist.append(i)
+  i -= 1
+ return alist
+
+m = input().split()
+n = int(m[0])
+num  = int(m[1])
+
+alist = giveMeDivsor(num)
+# print(alist)
+x = itertools.permutations(alist, 2)
+count = 0
+for i in x:
+ if (i[0] * i[1]) == num  and i[0] <= n and i[1] <= n:
+  count += 1
+print(count)

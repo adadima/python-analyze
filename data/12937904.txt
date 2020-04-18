@@ -1,0 +1,12 @@
+n,a=raw_input().split()
+n=long(n);a=long(a)
+count=0
+i=2
+while (i<=n):
+    if (a%i==0):
+        count+=1
+    i+=1
+if (n>=a):
+    print count+1
+else:
+    print count

@@ -1,0 +1,46 @@
+#Type 1: One Center
+#Type 2: Two Center
+n = int(input())
+permu = list(map(int,input().split()))
+Type = 0
+det = 0
+Ind = -1
+for i in range(n):
+    if(permu[i]-1==i):
+        det+=1
+        Ind=i
+if(det==1):
+    Type=1
+if(Type==0):
+    for i in range(n):
+        if(permu[permu[i]-1]-1==i):
+            Ind=i
+            Type=2
+if(det>2):
+    Type=0
+if(Type==0):
+    print("NO")
+elif(Type==1):
+    print("YES")
+    for i in range(n):
+        if(i!=Ind):
+            print(str(i+1)+' '+str(Ind+1))
+elif(n%2==1):
+    print("NO")
+else:
+    print("YES")
+    a,b=Ind,permu[Ind]-1
+    if(a==b):
+        for i in range(n):
+            if(permu[i]-1==i and i!=a):
+                b=i
+    t=1
+    for i in range(n):
+        if(i!=a and i!=b):
+            if(t>0):
+                print(str(i+1)+' '+str(a+1))
+                t=-t
+            else:
+                print(str(i+1)+' '+str(b+1))
+                t=-t
+    print(str(a+1)+' '+str(b+1))

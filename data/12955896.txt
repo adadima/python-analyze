@@ -1,0 +1,18 @@
+n = int( input( ) )
+v = [ [] ]
+tmp = []
+for i in range( 1001 ):
+    v.append( tmp )
+for i in range( n ):
+    a, b = map( int, input( ).split( ) )
+    tup = ( b, i + 1 )
+    index = int( a / 1000 )
+    v[ index ].append( tup )
+for i in range( 1001 ):
+    if( len( v[ i ] ) == 0 ): continue
+    v[ i ].sort( )
+    if( i % 2 ): v[ i ].reverse( )
+    for j in range( len( v[ i ] ) ):
+        print( v[ i ][ j ][ 1 ], end = ' ' )
+        
+    

@@ -1,0 +1,32 @@
+# !/Python34
+# Copyright 2015 Tim Murphy. All rights reserved.
+
+
+'''
+Problem 573E
+Bear and Bowling
+http://codeforces.com/problemset/problem/573/E
+
+
+'''
+
+rolls = int(input())
+
+scores = list(map(int, input().split()))
+backsum = 0
+
+for i in range(len(scores) - 1, -1, -1):
+ if scores[i] < 0:
+  if scores[i]*(i + 1) + backsum < 0:
+   scores.pop(i)
+  else:
+   backsum += scores[i]
+ else:
+  backsum += scores[i]
+
+total = 0
+
+for i in range(len(scores)):
+ total += scores[i]*(i + 1)
+
+print(total)

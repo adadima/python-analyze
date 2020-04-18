@@ -1,0 +1,16 @@
+if __name__=='__main__':
+    t = int(input())
+    voters = list(map(int,input().split()))
+    j = max(voters)
+    if voters.index(j)==0 and voters.count(j)==1:
+        print(0)
+    else:
+        k = voters.count(j)
+        first = voters[0]
+        i = 0
+        while first+(k*i)<= j-i:
+            i += 1
+        print(i*k)
+        
+        
+        

@@ -1,0 +1,31 @@
+def get_result(value):
+    min_so_far = get_initial(value)
+
+    i = 1
+    while True:
+        current = min(min_so_far, get_initial(value - 2 * i) + 2 * i)
+
+        if current < min_so_far:
+            min_so_far = current
+            i += 1
+            continue
+        else:
+            return min_so_far
+
+def get_initial(value):
+    if value == 0: return 0
+    
+    while float(value / 2).is_integer():
+        value = value / 2
+        continue
+
+    return value
+
+x = int(input())
+
+if x % 2 == 0:
+    result = get_result(x)
+else:
+    result = get_result(x - 1) + 1
+
+print(int(result))

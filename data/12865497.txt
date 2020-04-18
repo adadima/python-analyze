@@ -1,0 +1,67 @@
+__author__ = 'dwliv_000'
+def pow(x, n, I, mult):
+
+    if n == 0:
+        return I
+    elif n == 1:
+        return x
+    else:
+        y = pow(x, n // 2, I, mult)
+        y = mult(y, y)
+        if n % 2:
+            y = mult(x, y)
+        return y
+
+
+def identity_matrix(n):
+
+    r = list(range(n))
+    return [[1 if i == j else 0 for i in r] for j in r]
+
+
+def matrix_multiply(A, B):
+    BT = list(zip(*B))
+    return [[sum(a * b
+                 for a, b in zip(row_a, col_b))
+            for col_b in BT]
+            for row_a in A]
+
+
+def fib(n):
+    F = pow([[1, 1], [1, 0]], n, identity_matrix(2), matrix_multiply)
+    return F[0][1]
+
+(n,m)=(int(i) for i in input().split())
+k=int(input())
+g=[int(i) for i in input().split()]
+j=int(input())
+c={}
+q=0
+for j in range(j):
+    (a,b) = (int(i) for i in input().split())
+    c[a]=b
+    if(a>q):
+        q=a
+if(q%k)==0:
+    f=q
+else:
+    f=(q//k+1)*k
+
+
+if(n==1):
+    print(d[0]%m)
+else:
+    if(n==0):
+        print('0')
+    else:
+        n=n-1
+        if ((n-1)%f) in c:
+            sn=c[(n-1)%f]
+        else:
+            sn=g[(n-1)%f % len(g)]
+        if ((n-2)%f) in c:
+            sn2=c[(n-2)%f]
+        else:
+            sn2=g[(n-2)%f % len(g)]
+        l2=fib(n-1)*sn+fib(n-2)*sn2
+        print(l2%m)

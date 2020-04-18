@@ -1,0 +1,10 @@
+amount, num = map(int, input().split())
+check_list = []
+counter = 0
+for i in range(0, amount+1):
+    for b in range(0, amount+1):
+        check_list.append(i*b)
+for i in check_list:
+    if i == num:
+        counter+=1
+print(counter)

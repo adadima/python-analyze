@@ -1,0 +1,21 @@
+import itertools
+
+n,m = map(int, input().split(" "))
+l = [[] for i in range(n+1)]
+for i in range(m):
+    a,b = sorted(list(map(int, input().split(" "))))
+    l[a].append(b)
+result = 0
+for i in range(n):
+    if len([i])==0:
+        continue
+    else:
+        for enum in itertools.combinations(l[i],2):
+            x,y = sorted(enum)
+            if y in l[x]:
+                result += 1
+if result == 0:
+    result = -1
+print(result)
+        
+    

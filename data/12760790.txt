@@ -1,0 +1,25 @@
+n = int(input()) + 2
+h = [0] + list(map(int, input().split())) + [0]
+k = 0
+l, r = 0, n - 1
+o = 0
+while (o < 100 and r - l > 1):
+    o += 1
+    f0 = True
+    newh = [0 for i in range(n)]
+    i = l
+    first0, last0 = l, r
+    while i < r:
+        if h[i] == 0:
+            if f0:
+                first0 = i
+            elif h[i - 1] != 0:
+                last0 = i
+        else:
+            newh[i] = min(h[i - 1], h[i + 1], h[i] - 1)
+            f0 = False
+        i += 1
+    h = newh
+    k += 1
+    l, r = first0, last0
+print(k - 1)

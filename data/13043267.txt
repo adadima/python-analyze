@@ -1,0 +1,6 @@
+__author__ = 'dwliv_000'
+(a,b)=(int(i) for i in input().split())
+if(a<b):
+    print(-1)
+else:
+    print(min((a-b)/(((a-b)//2)*2),(a+b)/(((a+b)//2)*2)))

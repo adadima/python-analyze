@@ -1,0 +1,14 @@
+import heapq
+
+input()
+votes = [-int(i) for i in input().split()]
+n = init = - votes[0]
+votes = votes[1:]
+heapq.heapify(votes)
+
+while n <= -votes[0]:
+  f = heapq.heappop(votes)
+  heapq.heappush(votes, f + 1)
+  n += 1
+
+print(n - init)

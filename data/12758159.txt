@@ -1,0 +1,21 @@
+k=input()
+array=list(map(int,input().split()))
+t=array[0]
+array=sorted(array,reverse=True)
+total=0
+p=0
+for i in array:
+    if i==t:
+        p+=1
+        total+=i
+        break
+    else:
+        total+=i
+        p+=1
+
+ans=total/p
+if ans%1==0:
+    print(int(ans+1-t))
+else:
+    k=int(ans)+1
+    print(int(k-t))

@@ -1,0 +1,11 @@
+n = int(input())
+
+bak = 1
+
+while bak < n:
+    if bak * 2 > n:
+        break
+    else:
+        bak *= 2
+
+print(n - bak + 1)

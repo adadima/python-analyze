@@ -1,0 +1,15 @@
+n = int(input())
+# n = 6
+l = []
+for i in range(2, n + 1):
+    for p in l:
+        if i % p == 0:
+            break
+    else:
+        el = i
+        while el <= n:
+            l.append(el)
+            el *= i
+
+print(len(l))
+print(" ".join([str(i) for i in l]))

@@ -1,0 +1,15 @@
+from fractions import Fraction
+
+def solve(a, b):
+    if b > a:
+        return -1
+    if b < 0:
+        return -1
+    x = (a+b)/2
+    while b <= x/2:
+        x /= 2
+    return float(x)
+
+
+a, b = map(Fraction, input().split())
+print(solve(a, b))

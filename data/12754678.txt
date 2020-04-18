@@ -1,0 +1,43 @@
+n = input('')
+n = list(map(int,n.split()))
+
+knowings = {}
+
+for i in range(n[0]):
+    knowings[i+1] = []
+
+for i in range(n[1]):
+    r = input('')
+    sisse = list(map(int, r.split()))
+    knowings[sisse[0]].append(sisse[1])
+    knowings[sisse[1]].append(sisse[0])
+
+
+
+triples = []
+
+for knight, recs in knowings.items():
+    for i in recs:
+        for j in recs:
+            if i != j:
+                if j in knowings[i]:
+                    r = [knight, i, j]
+                    r.sort()
+                    if r not in triples:
+                        triples.append(r)
+
+
+minimum = -1
+
+for i in triples:
+    count = 0
+    for j in i:
+        for k in knowings[j]:
+            if k not in i:
+                count += 1
+    if minimum > count and minimum != -1:
+        minimum = count
+
+print(minimum)
+                
+                   

@@ -1,0 +1,20 @@
+#import sys
+#sys.stdin = open("python/in", "r")
+#from collections import defaultdict
+#import numpy as np
+#import array as rr
+#arr = rr.array('q')
+import math
+#n = int(input())
+x, y = [int (i) for i in input().split(" ")]
+fail = False
+if x < y:
+    fail = True
+    
+if not fail:
+    a = (x + y)/2
+    ans = math.floor(a / y)
+    ans = a / ans
+    print (ans)
+else:
+    print(-1)

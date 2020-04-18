@@ -1,0 +1,11 @@
+from math import log2
+from math import ceil
+n = int(input())
+a = int(log2(n))
+b = ceil(log2(n))
+if a == b:
+    print(1)
+else:
+    #k = n - 2**a
+    #print(1 + k // 2 + k % 2)
+    print(2)

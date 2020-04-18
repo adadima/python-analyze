@@ -1,0 +1,11 @@
+n, x = map(int,input().split())
+k = 1
+col = 0
+while k * k < x:
+    if x % k == 0 and (x // k) <= n and k <= n:
+        col += 2
+    k += 1
+if k * k == x:
+    col += 1
+print(col)
+        

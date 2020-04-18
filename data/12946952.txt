@@ -1,0 +1,11 @@
+n, m = [int(i) for i in input().split()]
+r = [False] * m
+for x in [int(i)%m for i in input().split()]:
+ for i in range(m):
+  if r[i]:
+   r[(i+x)%m] = True
+ r[x] = True
+ if r[0]:
+  print("YES")
+  exit(0)
+print("NO")

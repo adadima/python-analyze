@@ -1,0 +1,16 @@
+n = int(input())
+k = n - n//2 +1
+a = list()
+v=0
+i=2
+while v!=k:
+    if k-v==1:
+        a.append(i)
+        break
+    a.append(i)
+    a.append(i+2)
+    i+=1
+    v+=2
+
+print (len(a))
+print(' '.join(map(str,a)))

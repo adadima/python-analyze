@@ -1,0 +1,20 @@
+N = int(input())
+const = 1000000007
+a = 5
+dp = [5]
+if N == 1:
+    print(5)
+else:
+    for i in range(4, N + 3):
+        dp.append((a + i))
+        a += i
+    k = 1
+    for j in range(N - 1):
+        #print(dp)
+        dp1 = [(dp[1] * 2 + 1)]
+        for i in range(N - k - 1):
+            dp1.append((dp1[i] + dp[i + 2] + 1))
+        #print(dp1)
+        dp = dp1
+        k += 1
+    print(dp1[0] % const)

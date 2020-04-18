@@ -1,0 +1,20 @@
+n, m = map(int, input().split())
+s = [[0 for i in range(n)] for j in range(n)]
+dop = []
+ans_1 = []
+ans_2 = []
+schet = 0
+for i in range(m):
+    dop = list(map(int, input().split()))
+    s[dop[0] - 1][dop[1] - 1] = 1
+for i in range(n - 1):
+    for j in range(i, n - 1):
+        if s[i][j] == 1 and s[i][j + 1] == 1 and s[i + 1][j + 1] == 1:
+            ans_1.append(i)
+            ans_1.append(j)
+            schet += s[i].count(1) + s[i + 1].count(1)
+            ans_2.append(schet)
+if len(ans_2) != 0:
+    print(min(ans_2) - 2)
+else:
+    print(-1)

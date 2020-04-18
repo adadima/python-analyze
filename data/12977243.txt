@@ -1,0 +1,14 @@
+n, m = map(int, input().split(' '))
+v = [int(x) for x in input().split(' ')]
+
+modSum = m * [False]
+for x in v:
+    for i in range(len(modSum)):
+        if modSum[i]:
+            modSum[(x + i) % m] = True
+    modSum[x % m] += True
+
+if modSum[0]:
+    print("YES")
+else:
+    print("NO")

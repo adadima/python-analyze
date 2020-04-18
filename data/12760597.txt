@@ -1,0 +1,12 @@
+n = int(input())
+s = list(map(int, input().split()))
+max1 = max(s[1:])
+ind = s[1:].index(max1) + 1
+schet = 0
+while s[0] <= max1:
+    s[0] += 1
+    s[ind] -= 1
+    max1 = max(s[1:])
+    ind = s[1:].index(max1) + 1
+    schet += 1
+print(schet)

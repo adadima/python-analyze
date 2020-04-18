@@ -1,0 +1,28 @@
+n, x = map(int, input().split())
+lr = [tuple(map(int, input().split())) for _ in range(n)]
+best = 987654321
+Q = [(0, 0, x)]
+while Q:
+    cost, now, x = Q.pop()
+    if now == n:
+        best = min(best, cost)
+        continue
+    if cost > best:
+        continue
+    l, r = lr[now]
+    if l <= x <= r:
+        dc = 0
+    if x < l:
+        dc = l-x
+    if x > r:
+        dc = x-r
+    Q.append((cost+dc, now+1, x))
+    if x < l:
+        dc = l-x
+        x = l
+    if x > r:
+        dc = x-r
+        x = r
+    Q.append((cost+dc, now+1, x))
+
+print(best)

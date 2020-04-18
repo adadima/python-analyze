@@ -1,0 +1,23 @@
+from math import floor
+a, b = map(int, input().split())
+if a < 0:
+    print(-1)
+elif b < 0:
+    print(-1)
+elif a < b:
+    print(-1)
+elif a == 0 and b != 0:
+    print(-1)
+elif a == b:
+    print(b)
+elif b == 0:
+    print(0)
+else:
+    n1 = floor((a - b) / (2 * b))
+    n2 = floor((a + b) / (2 * b))
+    if n1 == 0:
+        print((a + b) / (2 * n2))
+    else:
+        x1 = (a - b) / (2 * n1)
+        x2 = (a + b) / (2 * n2)
+        print(min(x1, x2))

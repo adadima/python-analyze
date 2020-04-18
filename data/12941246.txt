@@ -1,0 +1,28 @@
+import copy
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+def f(p, n):
+    global m
+    if n % m == 0 and n != m:
+         return True
+    else:
+         t = copy.deepcopy(p)
+         for i in range(m):
+             if t[i] != 0:
+                 t[i] -= 1
+                 q = f(t, n - i)
+                 if q:
+                     return True
+         return False
+p = [0] * m
+sum = 0
+v = False
+for i in range(n):
+    p[a[i] % m] += 1
+    sum += a[i] % m
+    if a[i] % m == 0:
+        v = True
+if f(p, m) or sum % m == 0 or v:
+    print('YES')
+else:
+    print('NO')

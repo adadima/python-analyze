@@ -1,0 +1,16 @@
+a, b = [int(i) for i in input().split()]
+s = b+a
+d = a-b
+flag = 0
+if d < 0:
+    flag = 1
+while d/2 >= b:
+    d /= 2
+if s/4 >= b:
+    s /= 4
+while s/2 >= b:
+    s /= 2
+if flag == 1:
+    print(s)
+else:
+    print(min(s, d))

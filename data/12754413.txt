@@ -1,0 +1,30 @@
+input()
+lis = list(map(int,input().split()))
+bear = lis[0]
+num = 0
+lis.sort(reverse=True)
+for i in range(len(lis)):
+    if bear == lis[i]:
+        indx = i
+        break
+maxi = lis[0]
+if maxi == bear:
+    print(0)
+else:
+    diff = maxi - bear + 1
+    i = 0
+    while i in range(len(lis)):
+        if lis[i] > lis[indx]:
+            lis[i] -= 1
+            num += 1
+            lis[indx] += 1
+            i += 1
+        else:
+            j = 0
+            while lis[j] > lis[indx]:
+                j += 1
+            indx = j
+            i = 0
+            if i == j:
+                break
+    print(num)

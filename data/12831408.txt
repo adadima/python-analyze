@@ -1,0 +1,18 @@
+cCount = int(input())
+cList = [int(x) for x in input().split()]
+oldl = cList.pop(0)
+l = oldl
+while(max(cList) >= l):
+    n = cList.count(max(cList)) # number of top candidates
+    d = max(cList) - l # difference
+    if d < n:
+        l += d + 1
+        for x in range(d + 1):
+            cList[cList.index(max(cList))] -= 1
+    else:
+        d -= n
+        l += n
+        for x in range(n):
+            cList[cList.index(max(cList))] -= 1
+
+print(l - oldl)

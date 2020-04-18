@@ -1,0 +1,21 @@
+import heapq as heap
+from sys import stdin, stdout
+input = stdin.readline
+
+n = int(input())
+h = []
+free = [True for _ in range(2*n)]
+for i in range(2*n-1):
+    for j,el in enumerate(map(int, input().split())):
+        heap.heappush(h, (-el, (i+1, j)))
+
+ans = [0] * 2*n
+while len(h):
+  _, v = heap.heappop(h)
+  i, j = v
+  if free[i] and free[j]:
+    ans[i] = str(j+1)
+    ans[j] = str(i+1)
+    free[i] = False
+    free[j] = False
+stdout.write(" ".join(ans))

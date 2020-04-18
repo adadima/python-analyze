@@ -1,0 +1,21 @@
+N = int(input())
+A = list(int(i) for i in input().split())
+
+def getMax():
+ global A
+ maxv = -1
+ maxi = -1
+ for i in range(len(A)):
+  if(A[i]>=maxv):
+   maxv = A[i]
+   maxi = i
+ return maxi
+ 
+bribes = 0
+k = getMax()
+while(k!=0):
+ A[k]-=1
+ A[0]+=1
+ bribes+=1
+ k=getMax()
+print(bribes)

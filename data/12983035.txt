@@ -1,0 +1,54 @@
+import math
+n=int(input())
+tt=n
+def prime(n):
+    ans=[]
+    s=[i+2 for i in range(n-1)]
+    k=math.sqrt(n)
+    p=0
+    value=0
+    while value<=k:
+        #print(value)
+        p=value
+        while p<=n-1:
+            p=p+s[value]
+            if p<len(s):
+                s[p]=-1
+            
+        i=0
+     
+        while i<len(s):
+            if s[i]!=-1 and i>value:
+                value=i
+                break
+            i+=1
+    for i in s:
+         if i!=-1:
+             ans.append(i)
+
+    return ans   
+
+
+s=prime(n)
+
+i=0
+if len(s)==0:
+    print(0)
+
+else:
+    ans=0
+    array=[]
+    for pr in s:
+        ppol=pr
+        while pr<=tt:
+            array.append(pr)
+            pr=pr*ppol
+            ans+=1
+            
+            
+        
+    print(ans)        
+    for i in array:
+        print(i,end=' ')
+    
+    

@@ -1,0 +1,15 @@
+#In the name of God
+n=int(input())
+t=0
+k=n
+while n:
+    i=0
+    while 2**i<n:
+        i=i+1
+    if 2**i==n:
+        print(1+t)
+        break
+    t=t+1
+    n=n-1
+print(k)
+    

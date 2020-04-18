@@ -1,0 +1,11 @@
+n = int(input())
+sum = 0
+col = 1
+for i in range(1, 2 * n):
+    sum += col
+    sum = sum % (10 ** 9 + 7)
+    if i <= n:
+        col *= 2
+    elif i == n + 1:
+        col = col * 2 - 2
+print(sum)

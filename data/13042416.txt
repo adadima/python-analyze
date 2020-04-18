@@ -1,0 +1,14 @@
+x,y=[int(x) for x in input().split()]
+
+if y>x:
+    print(-1)
+else:
+
+    xmax = x+y
+    ymax = xmax/2
+
+    while 1:
+        if ymax<y:
+            print(ymax*2)
+            break
+        ymax/=2

@@ -1,0 +1,9 @@
+a = int(input())
+s = 0
+while a != 0:
+    if (a % 2 == 0):
+        a = a // 2
+    else:
+        a -= 1
+        s += 1
+print(s)

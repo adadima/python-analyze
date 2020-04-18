@@ -1,0 +1,10 @@
+from math import factorial
+
+def binomial(n, r):
+    return factorial(n) // factorial(r) // factorial(n-r)
+
+
+def a(n) :
+        return binomial(2*n, n) - 1
+x = int(input())
+print(a(x + 1))

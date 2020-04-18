@@ -1,0 +1,42 @@
+n = int(input())
+h = list(map(int, input().split()))
+h.append(0)
+rec = 0
+h_minus = [0] * (n + 11)
+while True:
+    rec += 1
+    
+    for i in range(n):
+        if h[i] != 0:
+            if h[i - 1] == 0 or i == 0:
+                h_minus[i] = h[i]
+            if h[i + 1] == 0:
+                h_minus[i] = h[i]
+            if h[i] > h[i - 1] or h[i] > h[i] + 1:
+                h_minus[i] = h[i] - min(h[i - 1], h[i + 1])
+            if h[i] < h[i - 1] and h[i] < h[i + 1]:
+                h_minus[i] = 1
+            if h[i] == h[i - 1] or h[i] == h[i + 1]:
+                if h[i] > h[i + 1] or h[i] > h[i - 1]:
+                    h_minus[i] = h[i] - min(h[i - 1], h[i + 1])
+                else:
+                    h_minus[i] = 1
+    ans = True
+    
+    for i in range(n):
+        if h_minus[i] != 0:
+            break
+    else:
+        break
+    for i in range(n):
+        h[i] = h[i] - h_minus[i]
+        h_minus[i] = 0
+        
+
+print(rec - 1)        
+             
+                   
+                                           
+                
+            
+    

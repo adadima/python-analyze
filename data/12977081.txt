@@ -1,0 +1,14 @@
+import math
+n, x = map(int, input().split(' '))
+
+limit = int(math.sqrt(x)) + 1
+res = 0
+for div in range(1, limit):
+    if x % div == 0 and div <= n and x // div <= n:
+        res += 2
+
+#if it is a perfect square
+if int(math.sqrt(x)) == math.sqrt(x):
+    res -= 1
+
+print(res)

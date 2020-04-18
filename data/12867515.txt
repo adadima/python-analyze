@@ -1,0 +1,17 @@
+MOD = int(10e9 + 7)
+
+def nextbin(b, n, k):
+    return b * n // k
+
+N = int(input())
+s = 2 ** (2 * N + 1) - 1
+
+zeroed = 0
+b = 1
+for i in range(N):
+    zeroed = zeroed * 2 + b
+    s = (s - 2 * zeroed)
+    b = nextbin(b, N + i + 1, i + 1)
+#    print(b % MOD)
+
+print(s % MOD)

@@ -1,0 +1,10 @@
+# not my code, just for test issues
+print(2000)
+for i in range (999):
+ print('%d %d %d %d' % (i+1, 1, i+1, 2))
+i = 998
+print('%d %d %d %d' % (i+1, 1, i+1, 2))
+for i in range(998):
+ print('%d %d %d %d' % (999-i, 1, 999-i, 2))
+i = 1
+print('%d %d %d %d' % (i+1, 1, i+1, 2))

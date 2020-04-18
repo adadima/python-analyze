@@ -1,0 +1,10 @@
+n=int(input())
+def big2(a):
+    i=0
+    while 2**i<=a:
+        i=i+1
+    i-=1
+    return i
+print(n-2**big2(n)+1)
+        
+        

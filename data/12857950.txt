@@ -1,0 +1,18 @@
+n = 0
+n = int(input())
+i = 0
+l = []
+for i in range(0,n):
+    l.append(int(input()))
+bear = l[0]
+top = max(l)
+# diff = top - l[0]
+while l[0] < max(l):
+    top = max(l)
+    for h in range(0,n):
+        if top == max(l):
+            index = h
+        l[0] = l[0] + 1
+        l[index] = l[index] - 1
+res = l[0] - bear
+print(res)

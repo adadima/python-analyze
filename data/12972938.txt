@@ -1,0 +1,10 @@
+n, x = (int(i) for i in input().split())
+counter = 0
+for i in range(n):
+    for j in range(i+1):
+        if (i+1)*(j+1) == x:
+            if i != j:
+                counter += 2
+            else:
+                counter += 1
+print(counter)

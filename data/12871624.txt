@@ -1,0 +1,40 @@
+inp = input().split()
+N = int(inp[0])
+Q = int(inp[1])
+
+def incValue(arr, i1, i2):
+    try:
+        arr[i1][i2] += 1
+    except IndexError:
+        pass;
+
+field = [];
+for i in range(0, N):
+    row = [0] * N;
+    field.append(row);
+for i in range(0, Q):
+    inp = input().split()
+    if (inp[0] == '1'):
+        x = int(inp[2]);
+        y = int(inp[3]);
+        l = int(inp[4]);
+        if (inp[1] == '1'):
+            for k1 in range(y, y + l + 1):
+                for k2 in range(x, x + l + 1 - (y + l - k1)):
+                    incValue(field, k1, k2);
+        elif (inp[1] == '2'):
+            for k1 in range(y - l, y + 1):
+                for k2 in range(x, x + l + 1 - (k1 - y + l)):
+                    incValue(field, k1, k2);
+        elif (inp[1] == '3'):
+            for k1 in range(y, y + l + 1):
+                for k2 in range(x - l + (k1 - y), x + 1):
+                    incValue(field, k1, k2);
+        elif (inp[1] == '4'):
+            for k1 in range(y - l, y + 1):
+                for k2 in range(x - l + (y - k1), x + 1):
+                    incValue(field, k1, k2);
+    elif (inp[0] == '2'):
+        x = int(inp[1]);
+        y = int(inp[2]);
+        print(field[y][x]);

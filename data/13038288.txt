@@ -1,0 +1,10 @@
+L = [2 ** i for i in range(50)][::-1]
+N = int(input())
+count = 0
+while N > 0:
+    ind = 0
+    while L[ind] > N:
+        ind += 1
+    N -= L[ind]
+    count += 1
+print(count)

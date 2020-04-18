@@ -1,0 +1,11 @@
+start = 0
+x_i = 1
+x_i2 = 2
+start_x = 2
+start_x2 = 2
+print(999)
+while start <= 998:
+    print(start_x, x_i, start_x2, x_i2)
+    start_x+=1
+    start_x2+=1
+    start +=1

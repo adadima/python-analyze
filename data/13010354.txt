@@ -1,0 +1,27 @@
+n, m = map(int, input().split())
+a = [int(x) for x in input().split()]
+
+if n > m:
+ print("YES")
+ exit(0)
+
+can = []
+for i in range(n):
+ can.append([0] * m)
+
+def f1(i, r):
+ if i == n:
+  return
+ global can
+ can[i][(r+a[i])%m] += 1
+ f1(i+1, (r+a[i])%m)
+ can[i][r%m] += 1
+ f1(i+1, r)
+
+f1(0, 0)
+
+for i in range(n):
+ if can[i][0] > 1:
+  print("YES")
+  exit(0)
+print("NO")

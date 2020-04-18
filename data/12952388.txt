@@ -1,0 +1,19 @@
+n, m = [int(i) for i in input().split(' ')]
+a = [int(i) for i in input().split(' ')]
+
+dic = dict()
+dic[0] = 1
+f = 0
+
+for i in a:
+    l = list()
+    for j in dic:
+        if (i + j) % m == 0:
+            print('YES')
+            f = 1
+            break
+        l.append(i + j % m)
+    for j in l:
+        dic[j] = 1
+
+if f == 0: print('NO')

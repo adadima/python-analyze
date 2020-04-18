@@ -1,0 +1,20 @@
+n, m = map(int, input().split())
+g = []
+for _ in range(n+1):
+    g.append([])
+
+for _ in range(m):
+    a,b = map(int, input().split())
+    g[a].append(b)
+    g[b].append(a)
+
+best = 10000000
+for i in range(n):
+    for j in g[i]:
+        for k in g[j]:
+            if k in g[i]:
+                best = min(best, len(g[i]) + len(g[j]) + len(g[k]) - 6)
+                
+if best == 10000000: best = -1         
+    
+print(best)

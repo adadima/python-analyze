@@ -1,0 +1,43 @@
+n = int(input())
+towers = list(map(int, input().split(' ')))
+
+ranges = [[0, n-1, True]]
+
+t = [(towers[i], i) for i in range(len(towers)) if towers[i] < n]
+t = sorted(t, key=lambda x: x[0])
+count = 0
+activecount = 1
+ti = 0
+
+while activecount > 0:
+    count += 1
+
+    candidates = []
+    while ti < len(t) and t[ti][0] <= count:
+        candidates.append(t[ti][1])
+        ti += 1
+
+    for i in range(len(ranges)):
+        if not ranges[i][2]:
+            continue
+
+        ranges[i][0] += 1
+        ranges[i][1] -= 1
+        if ranges[i][0] > ranges[i][1]:
+            ranges[i][2] = False
+            activecount -= 1
+            continue
+
+        to_delete = []
+        for ci, c in enumerate(candidates):
+            if c > ranges[i][0] and c < ranges[i][1]:
+                tmp1, tmp2, active = ranges[i]
+                ranges[i][1] = c - 1
+                ranges.append([c + 1, tmp2, True])
+                to_delete.append(ci)
+                activecount += 1
+
+        for i in to_delete:
+            del candidates[i]
+
+print(count)

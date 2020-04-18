@@ -1,0 +1,9 @@
+n,k,x=map(int,input().split())
+l=list(map(int,input().split()))
+nom=0
+for i in range(n):
+    if l[nom]*(x**k)<l[i]*(x**k): nom=i
+l[nom]*=x**k
+s=0
+for x in l: s|=x
+print(s)

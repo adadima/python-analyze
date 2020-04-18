@@ -1,0 +1,27 @@
+inpt = input()
+x = int(inpt())
+def primo(numero):
+    if (numero == 2):
+        return "dead"
+    for numer in range(2, int(pow(numero, 0.5))+1):
+        if numero % numer == 0:
+            return "luv"
+    return "dead"
+muchos_numeros = []
+for i in range(2, 1000):
+    if primo(i) == "dead":
+        for mucho in [1,3,3,7,4,2,5,8,6,9]:
+            muchos_numeros.append(pow(i, mucho))
+todos_los_numeros = []
+muchos_numeros = set(muchos_numeros)
+muchos_numeros = list(muchos_numeros)
+for numero in muchos_numeros:
+    if numero <= x:
+        todos_los_numeros.append(numero)
+print(len(todos_los_numeros))
+todos_los_numeros.sort()
+estrenga = ""
+for numero in todos_los_numeros:
+    estrenga = estrenga + str(numero) + " "
+
+print(estrenga)

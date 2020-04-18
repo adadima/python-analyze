@@ -1,0 +1,15 @@
+N = int(input())
+const = 1000000007
+dp = [[0] * N] * N
+a = 5
+for i in range(N):
+    dp[i][0] = a % const
+    a += (i + 4) % const
+a = 9
+for i in range(1, N):
+    dp[0][i] = a % const
+    a += (i + 4) % const
+for i in range(1, N):
+    for j in range(1, N):
+        dp[i][j] = (dp[i - 1][j] + dp[i][j - 1] + 1) % const
+print(dp[N - 1][N - 1])

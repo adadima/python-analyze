@@ -1,0 +1,26 @@
+#!/usr/bin/python3.4
+
+import time
+
+SIZE = 26
+matrix = [[0] * SIZE for i in range(SIZE)]
+arr = [0] * SIZE
+
+def timer(func, *pargs, **kargs):
+    start = time.time()
+    func(*pargs, **kargs)
+    return time.time() - start
+
+if __name__ == "__main__":
+    n = int(input())
+    a = list(map(int, input().split()))
+    value, c = a[0], 0
+    a = a[1:]
+    while True:
+        a.sort(reverse=True)
+        if value > a[0]:
+            break
+        value += 1
+        c += 1
+        a[0] -= 1
+    print(c)

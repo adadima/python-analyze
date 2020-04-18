@@ -1,0 +1,35 @@
+import sys
+
+def chkrange(list, a, b):
+    while a > 0:
+        if list[a] == list[a-1]:
+            a -= 1
+        else:
+            break
+    return(a, b)
+    
+
+n = int(input())
+list2 = input().split()
+list = []
+for item in list2:
+    list.append(int(item))
+vote = list[0]
+del list[0]
+list.sort()
+
+a = len(list)-1
+b = a
+
+a, b = chkrange(list, a, b)
+ans = 0
+i = a
+while vote <= list[len(list)-1]:
+    list[i] -= 1
+    i += 1
+    ans += 1
+    vote += 1
+    if i == len(list):
+        a, b = chkrange(list, a, b)
+        i = a
+print (ans)

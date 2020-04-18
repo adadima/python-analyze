@@ -1,0 +1,21 @@
+n = int(input())
+n = n*2 + 2
+ans = 1
+j = 2
+for i in range(int(n/2+1),n+1):
+    ans = ans * i
+    if ans % j == 0:
+        if j <= n//2:
+            ans = ans // j
+            j+=1
+
+for i in range(j,int(n/2+1)):
+    ans = ans // i
+
+ans = ans % 1000000007
+
+ans -= 1
+if ans < 0:
+    ans = ans + 1000000007
+
+print(ans)

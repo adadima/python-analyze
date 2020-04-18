@@ -1,0 +1,13 @@
+__author__ = 'Rakshak.R.Hegde'
+"""
+Created on Sep 16 2015 8:47 PM
+
+@author: Rakshak.R.Hegde
+"""
+
+x = int(input())
+c = 1
+while x:
+    x = x - 2 ** (x.bit_length() - 1)
+    if x: c += 1
+print(c)

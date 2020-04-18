@@ -1,0 +1,18 @@
+import itertools
+
+m = int(input().split()[1])
+temp = input().split()
+alist = [int(i) for i in temp]
+flag = 0
+for i in range(1, len(alist)+1):
+ x = itertools.combinations(alist, i)
+ for j in x:
+  if sum(j)%m == 0:
+   flag = 1
+   break
+ if flag == 1:
+  break
+if flag == 1:
+ print("YES")
+else:
+ print("NO")

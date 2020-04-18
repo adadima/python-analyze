@@ -1,0 +1,8 @@
+from math import *
+n = int(input())
+x = 0
+while(n > 0):
+    if(n % 2 == 1):
+        x+=1
+    n //= 2
+print(x)

@@ -1,0 +1,33 @@
+n, m = input().split()
+seq = input().split()
+
+n = int(n)
+m = int(m)
+
+def SUM(pl):
+    fin = 0
+    for x in pl:
+        fin += int(seq[x])
+    return fin
+
+for l in range(n + 1):
+    run = True
+    pl = list(range(l + 1))
+    while run:
+        if SUM(pl) == m:
+            print("YES")
+            run = False
+        pl[-1] += 1
+        for p, x in enumerate(reversed(pl)):
+            if x == n:
+                if p < l:
+                    pl[-p-1] = 0
+                    pl[-p-2] += 1
+            else:
+                break
+        else:
+            break
+    else:
+        break
+else:
+    print("NO")

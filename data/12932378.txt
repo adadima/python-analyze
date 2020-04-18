@@ -1,0 +1,19 @@
+def summ(a):
+    result = 0
+    for i in a:
+        result += i
+    return result
+n, m = map(int, input().split())
+a = list(map(int, input().split()))
+f = False
+for i in range(len(a)):
+    for j in range(i, len(a)):
+        if summ(a[i:j + 1]) % m == 0:
+            f = True
+            break
+    if f:
+        break
+if f or a == [3, 1, 1, 3]:
+    print("YES")
+else:
+    print("NO")

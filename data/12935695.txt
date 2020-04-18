@@ -1,0 +1,15 @@
+import math
+Gegeven = input().split(" ")
+n = int(Gegeven[0])
+x = int(Gegeven[1])
+Aantal = 0
+
+if n * n < x:
+    Aantal = 0
+else:
+    for i in range(1, 2*math.ceil(math.sqrt(x)+1)):
+        for j in range(1, 2*math.ceil(math.sqrt(x)+1)):
+            if i * j == x:
+                Aantal += 1
+
+print (Aantal)

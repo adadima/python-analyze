@@ -1,0 +1,26 @@
+n=int(input())
+
+l=input().split()
+x=int(l[0])
+for i in range(n):
+    l[i]=int(l[i])
+l.sort()
+k=l[-n]
+for i in range(n):
+    if(x==l[i]):
+        y=i
+if(x==l[-1] and l[-1]==l[-2]):
+    print(1)
+elif(x==l[-1]):
+    print(0)
+else:
+    i=y
+    s=0
+    while(i<n-1):
+        m=l[i+1]+l[i]
+        d=m//2+1
+        l[i+1]=d
+        s+=l[i+1]-l[i]
+        l[i]=m-l[i+1]
+        i+=1
+    print(s-1)

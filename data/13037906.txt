@@ -1,0 +1,12 @@
+from math import floor
+a, b = map(int, input().split())
+if a - b < 0:
+    print(-1)
+elif a == b:
+    print(0)
+else:
+    n = floor((a - b) / (2 * b))
+    x1 = (a - b) / (2 * n)
+    n = floor((a + b) / (2 * b))
+    x2 = (a + b) / (2 * n)
+    print(min(x1, x2))

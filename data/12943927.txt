@@ -1,0 +1,26 @@
+n=int(input())
+t=["#"]+input().split()
+b=False
+v=0
+for i in range(1,len(t)):
+ if i==int(t[i]):
+  b=True
+  v=i
+if b:
+ print("YES")
+ for i in range(1,len(t)):
+  if i!=v:print(v,i)
+
+else:
+ bb=True
+ for i in range(1,len(t)):
+  if int(t[int(t[i])])!=i:bb=False
+ if bb:
+  print("YES")
+  print(1,int(t[1]))
+  for i in range(2,len(t)):
+   if int(t[i])>i:
+    print(1,i)
+    print(int(t[1]),int(t[i]))
+ else:
+  print("NO")

@@ -1,0 +1,13 @@
+n = int(input())
+s = [int(i) for i in input().split(' ')]
+a = s.pop(0)
+m = max(s)
+k = 0
+while a <= m:
+ a += 1
+ s[s.index(m)] -= 1
+ k += 1
+ m = max(s)
+
+print(k)
+ 

@@ -1,0 +1,23 @@
+n, m = map(int, input().split())
+s = list(map(int, input().split()))
+for i in range(n):
+    s[i] = s[i] % m
+ost = []
+flag = False
+if n >= m:
+    flag = True
+else:        
+    for i in range(n):
+        if  (m - s[i]) in ost:
+            flag = True
+            break
+        else:
+            for j in range(len(ost)):
+                if ((ost[j] + s[i]) % m) not in ost:
+                    ost.append((ost[j] + s[i]) % m)
+            if s[i] not in ost:
+                ost.append(s[i])                                       
+if 0 in ost or flag:
+    print('YES')
+else:
+    print('NO')

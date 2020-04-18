@@ -1,0 +1,22 @@
+def main():
+    mode="filee"
+    if mode=="file":f=open("test.txt","r")
+
+    if mode=="file":
+        [n,k,x]=[int(x) for x in f.readline()[:-1].split()]
+        a=[int(x) for x in f.readline().split()]
+    else:
+        [n,k,x]=[int(x) for x in input().split()]
+        a=[int(x) for x in input().split()]
+    a.sort()
+    a[-1]=a[-1]*(x**k)
+    h=0
+    for i in a:
+        h=h|i
+    print(h)
+
+    if mode=="file":f.close()
+
+
+if __name__=="__main__":
+    main()

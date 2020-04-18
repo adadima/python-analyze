@@ -1,0 +1,11 @@
+import math
+numeros = 0
+me_gusta = input().split(' ')
+uno = me_gusta[0]
+dos = me_gusta[1]
+unouno = int(uno)
+dosdos = int(dos)
+for omegustalanumerooomegustaomegustalanumerooomegustaomegustalanumerooomegusta in range(max(1, math.ceil(dosdos/unouno)), unouno+1):
+    if dosdos%omegustalanumerooomegustaomegustalanumerooomegustaomegustalanumerooomegusta == 0:
+        numeros += 1
+print(numeros)

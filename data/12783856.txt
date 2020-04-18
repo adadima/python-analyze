@@ -1,0 +1,14 @@
+n = input()
+me, *cans = list(map(int, input().split(' ')))
+
+c = 0
+while True:
+    m = max(enumerate(cans), key=lambda x: x[1])
+    if m[1] < me:
+        break
+    cans[m[0]] -= 1
+    me += 1
+    c += 1
+
+
+print(c)

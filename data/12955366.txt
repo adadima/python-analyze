@@ -1,0 +1,50 @@
+def main():
+    n, m = map(int, input().split())
+    lim = (n + 10) // 6
+    sieve = [False, True, True] * lim
+    lim = lim * 3 - 1
+    for i, s in enumerate(sieve):
+        if s:
+            p, pp = i * 2 + 3, (i + 3) * i * 2 + 3
+            le = (lim - pp) // p + 1
+            if le > 0:
+                sieve[pp::p] = [False] * le
+            else:
+                break
+    sieve[0] = sieve[3] = True
+    primes = [i * 2 + 3 for i, f in enumerate(sieve) if f]
+    for i, p in enumerate((2, 3, 5, 7)):
+        primes[i] = p
+    del sieve
+
+    x, factor = m, []
+    for p in primes:
+        cnt = 0
+        while not x % p:
+            x //= p
+            cnt += 1
+        if cnt:
+            factor.append((p, cnt))
+            if x == 1:
+                break
+
+    divisors = [1]
+    for k, v in factor:
+        for i in range(len(divisors)):
+            x = divisors[i]
+            for j in range(v):
+                x *= k
+                divisors.append(x)
+    res = 0
+    for x in divisors:
+        if x <= n:
+            y = m // x
+            if y < x:
+                res += 2
+            elif y == x:
+                res += 1
+    print(res)
+
+
+if __name__ == '__main__':
+    main()

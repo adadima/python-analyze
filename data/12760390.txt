@@ -1,0 +1,32 @@
+#In the name of Allah
+
+from sys import stdin, stdout
+input = stdin.readline
+
+def main():
+         n = int(input())
+         h = list(map(int, input().split()))
+
+         def fin():
+                  for i in h:
+                           if i > 0:
+                                    return 0
+                  return 1
+         l = 0
+         r = n
+         ans = 0
+
+         while not fin():
+                  l += 1
+                  r -= 1
+                  tmp = h.copy()
+                  for i in range(l, r):
+                           h[i] = min(tmp[i], tmp[i - 1], tmp[i + 1])
+                           if tmp[i] == h[i]:
+                                    h[i] -= 1         
+                  h[l - 1] = 0
+                  h[r] = 0
+                  ans += 1
+         return ans
+
+stdout.write(str(main()))

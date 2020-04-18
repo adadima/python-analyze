@@ -1,0 +1,7 @@
+amount, num = map(int, input().split())
+counter = 0
+for i in range(0, amount+1):
+    for b in range(0, amount+1):
+        if i*b == num:
+            counter+=1
+print(counter)

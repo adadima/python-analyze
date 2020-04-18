@@ -1,0 +1,31 @@
+def bfs(solj, known):
+    answer = float('inf')
+    q = [(solj, 0, solj, 1)]
+    o = 0
+    while (len(q) != 0 and q[0][3] < 4) and o < 100:
+        o += 1
+        cur, ans, prev, rnd = q.pop(0)
+        for i in known[cur]:
+            if i == prev or len(known[i]) < 2: continue
+            q.append((i, ans + len(known[cur]) - 2, cur, rnd + 1))
+    else:
+        for i in q:
+            if i[0] == solj: answer = min(answer, i[1])
+    return(answer)
+            
+            
+
+
+from sys import stdin, stdout
+n, m = map(int, stdin.readline().split())
+known = [[] for i in range(n)]
+for i in range(m):
+    x, y = map(int, stdin.readline().split())
+    known[x - 1].append(y - 1)
+    known[y - 1].append(x - 1)
+answer = float('inf')
+for i in range(n):
+    answer = min(answer, bfs(i, known))
+if answer == float('inf'):
+    answer = -1
+print(answer)

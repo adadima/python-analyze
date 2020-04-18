@@ -1,0 +1,47 @@
+import sys
+from collections import Counter
+
+lines = sys.stdin.read().split("\n")
+# n, k = map(int, lines[0].split(" "))
+# n = int(lines[0])
+# nums = list(map(int, lines[1].split(" ")))
+
+
+n = int(lines[0])
+nums = list(map(int, lines[1].split(" ")))
+s = nums[0]
+os = nums[0]
+nums = nums[1:]
+nums.sort()
+
+
+def get_max_n(nums):
+    pre = nums[-1]
+    for i in range(len(nums) - 1, -1, -1):
+        if nums[i] != pre:
+            break
+    if nums[i] != pre:
+        return len(nums) - (i + 1), pre, nums[i]
+    else:
+        return len(nums), pre, 0
+
+while True:
+    a, b, c = get_max_n(nums)
+    if a * (b - c) + s > c:
+        if s > b:
+            break
+        for i in range(1, b - c + 1):
+            if i * a + s > b - i:
+                if i * a + s - 1 <= b - i + 1:
+                    s = i * a + s
+                    break
+                else:
+                    subdown = min(a - 2, i * a + s - 1 - (b - i + 1) - 1)
+                    subdown = 0 if subdown < 0 else subdown
+                    s = i * a + s - 1 - subdown
+                    break
+        break
+    else:
+        s += a * (b - c)
+        nums[-a:] = [c] * a
+print(s - os)

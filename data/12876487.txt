@@ -1,0 +1,11 @@
+n = int(input())
+all_v = list(map(int, input().split()))
+v = all_v[1:]
+v_for_L = all_v[0]
+v = sorted(v)
+count = 0
+while v_for_L <= v[0]:
+    v[0] -= 1
+    v = sorted(v)
+    coutn += 1
+print(count)

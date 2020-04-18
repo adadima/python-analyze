@@ -1,0 +1,22 @@
+import math
+
+n = int(input())
+m = 1
+ans = []
+
+def is_prime(number):
+  for i in range(2, int(math.sqrt(number))+1):
+      if number % i == 0:
+          return False
+  return True
+
+
+for el in range(2, n + 1):
+    if is_prime(el):
+        candidate = el
+        while candidate <= n:
+            ans.append(str(candidate))
+            candidate *= el
+
+print(len(ans))
+print(" ".join(ans))

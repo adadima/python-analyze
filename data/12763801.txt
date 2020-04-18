@@ -1,0 +1,33 @@
+import math
+candnum = input()
+votes = raw_input().split(' ')
+numbribes = 0
+for z in range (0,candnum):
+    votes[z] = float(votes[z])
+    
+lvotes = [votes[0]]
+
+votes = votes[1:]
+
+votes.sort(reverse=True)
+votes[:0] = lvotes
+
+while votes[0] != max(votes):
+    for i in range (1, candnum):
+        if votes[i]-votes[0] > 0:
+            x = math.ceil((votes[i]-votes[0])/2)
+            numbribes = numbribes + int(x)
+            votes[0] = votes[0] + int(x)
+            votes[i] = votes[i] - int(x)
+        elif votes[i]-votes[0] == 0:
+            numbribes = numbribes + 1
+            votes[0] = votes[0] + 1
+            votes[i] = votes[i] - 1
+
+for i in range (1, candnum):
+        if votes[i]-votes[0] == 0:
+            numbribes = numbribes + 1
+            votes[0] = votes[0] + 1
+            votes[i] = votes[i] - 1
+            break;
+print(numbribes)

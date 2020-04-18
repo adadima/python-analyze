@@ -1,0 +1,18 @@
+def dec_to_bin(a):
+    cnt = 0
+    while 2 ** cnt <= a:
+        cnt += 1
+    if cnt > 0:
+        cnt -= 1
+    var = a
+    result = ''
+    while cnt >= 0:
+        if var >= 2 ** cnt:
+            result += '1'
+            var -= 2 ** cnt
+        else:
+            result += '0'
+        cnt -= 1
+    return result
+a = int(input())
+print(str(dec_to_bin(a)).count('1'))

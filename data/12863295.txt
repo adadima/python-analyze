@@ -1,0 +1,6 @@
+print('2000')
+a = 2
+for i in range(1000):
+    for j in range(2):
+        print(a, 1, a, 2)
+    a += 2

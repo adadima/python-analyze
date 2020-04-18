@@ -1,0 +1,13 @@
+n = input()
+arr = list(map(int,input().split()))
+lum = arr[0]
+del(arr[0])
+count=0
+arr = sorted(arr)[::-1]
+'''print(arr)'''
+while lum<=arr[0]:
+    lum+=1
+    arr[0]-=1
+    count+=1
+    arr=sorted(arr)[::-1]
+print(count)    

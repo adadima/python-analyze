@@ -1,0 +1,16 @@
+n2 = int(input()) * 2
+ans = [-1 for i in range(n2)]
+pl = {}
+for i in range(n2 - 1):
+ inp = [int(x) for x in input().split()]
+ for j in range(i+1):
+  pl[inp[j]] = (i+1, j)
+while pl:
+ curmax = max(pl.keys())
+ curans = pl[curmax]
+ if ans[curans[0]] == -1 and ans[curans[1]] == -1:
+  ans[curans[0]] = curans[1]
+  ans[curans[1]] = curans[0]
+ del pl[curmax]
+
+print(" ".join(str(x+1) for x in ans))

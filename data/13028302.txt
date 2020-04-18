@@ -1,0 +1,15 @@
+import math
+from sys import stdin, stdout
+input = stdin.readline
+
+x = int(input())
+ans = 0
+
+while x > 1:
+    log = math.log(x, 2)
+    n = int(log)
+    ans += 1
+    x -= (1<<n)
+
+ans += x
+stdout.write(str(ans))

@@ -1,0 +1,14 @@
+a, b = map(int, input().split())
+if b > a:
+    print(-1)
+else:
+    y = b
+    cnt = 0
+    while (y <= (a + b)) and (cnt < 100):
+        y *= 2
+        cnt += 1
+    cnt -= 1
+    if (cnt == 99):
+        print(0)
+    else:
+        print((a + b) / (2 ** cnt))

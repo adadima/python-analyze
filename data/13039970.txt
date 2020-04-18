@@ -1,0 +1,34 @@
+n=int(input())*2-1
+
+fuerzas = [[0 for i in range(n+1)] for i in range(n+1)]
+for i in range(1,n+1):
+    tmp = input().split()
+    j=0
+    for cadena in tmp:
+        fuerzas[i][j]=int(cadena)
+        fuerzas[j][i]=int(cadena)
+        j+=1
+
+#print(fuerzas)
+
+amigos = [-1 for i in range(n+1)]
+flag=True
+while flag:
+    flag=False
+    for asignando in range(0,n+1):
+        if amigos[asignando]!=-1: continue
+        posible = fuerzas[asignando].index(max(fuerzas[asignando]))
+        if fuerzas[posible].index(max(fuerzas[posible]))==asignando:
+            flag=True
+            #par encontrado
+            #print("Par: " + str(posible) + "," + str(asignando))
+            for k in fuerzas:
+                k[posible]=-1
+                k[asignando] = -1
+            #fuerzas[posible][asignando]=-1
+            #fuerzas[asignando][posible]=-1
+            #print(fuerzas)
+            amigos[asignando]=posible+1
+            amigos[posible]=asignando+1
+    
+print(" ".join([str(x) for x in amigos]))

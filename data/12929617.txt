@@ -1,0 +1,23 @@
+#include <iostream>
+using namespace std;
+typedef long long ll;
+
+#define MAX_M 1000
+
+int main() {
+ ll mod[MAX_M];
+ ll n, m;
+ for (int i = 0; i < MAX_M; i++)
+  mod[i] = 0;
+ cin >> n >> m;
+ for (int i = 0; i < n; i++) {
+  ll tmp;
+  cin >> tmp;
+  for (int i = 0; i < m; i++)
+   if (mod[i] != 0)
+    mod[(i + tmp) % m] = 1;
+  mod[tmp] = 1;
+ }
+ cout << (mod[0] != 0 ? "YES" : "NO");
+ return 0;
+}

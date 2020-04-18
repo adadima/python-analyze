@@ -1,0 +1,36 @@
+#In the name of Allah
+
+from sys import stdin, stdout
+input = stdin.readline
+
+n, m = map(int, input().split())
+
+d = {}
+
+for i in range(m):
+         a, b = input().split()
+
+         try:
+                  d[a].append(b)
+         except KeyError:
+                  d[a] = [b]
+
+         try:
+                  d[b].append(a)
+         except KeyError:
+                  d[b] = [a]
+
+l = {}
+for i in d:
+         l[i] = len(d[i])
+ans = float("inf")
+for i in d:
+         if l[i] < 2:
+                  continue
+         for j in range(l[i]):
+                  for k in range(j + 1, l[i]):
+                           if d[i][k] in d[d[i][j]]:
+                                    cur = l[i] + l[d[i][j]] + l[d[i][k]] - 6
+                                    ans = min(cur, ans)
+
+stdout.write(str(-1 if ans == float("inf") else ans))

@@ -1,0 +1,27 @@
+def rec(clubs, N, mtrx, maxS):
+    if (len(clubs) == N):
+        s = 0;
+        for i in range(0, N):
+            s += max(mtrx[i][clubs[i]], mtrx[i + N][clubs[i]]);
+        if (s > maxS[0]):
+            maxS[0] = s;
+    else:
+        for i in range(0, N):
+            if (not clubs.__contains__(i)):
+                clubs.append(i)
+                rec(clubs, N, mtrx, maxS)
+                clubs.remove(i)
+
+N = int(input())
+
+mtrx = []
+maxS = [-1];
+for i in range(0, 2 * N):
+    row = list(map(lambda x: int(x), input().split()));
+    mtrx.append(row);
+
+usedClubs = [];
+
+rec(usedClubs, N, mtrx, maxS);
+
+print(maxS[0]);

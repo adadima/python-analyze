@@ -1,0 +1,10 @@
+n=int(input())
+arr=list(map(int,input().split()))
+mx=arr.pop(0)
+ans=mx
+arr.sort(reverse=True)
+while(mx<=arr[0]):
+ mx+=1
+ arr[0]-=1
+ arr.sort(reverse=True)
+print(mx-ans)

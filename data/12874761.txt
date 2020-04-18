@@ -1,0 +1,10 @@
+#e_coder
+import sys
+dp=[1]*2000002
+n=int(raw_input())+1
+mod=1000000007
+for i in xrange(2,2*n+1):
+    dp[i]=dp[i-1]*i % mod
+p=pow(dp[n],(mod - 2) * 2,mod)
+ans=(dp[2*n]*p+mod-1) % mod
+print ans

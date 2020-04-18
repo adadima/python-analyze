@@ -1,0 +1,21 @@
+line=input().split(" ")
+n=int(line[0])
+k=int(line[1])
+x=int(line[2])
+line2=input().split(" ")
+mayor=-1
+for i in range(len(line2)):
+    line2[i]=int(line2[i])
+    if line2[i]>mayor:
+        mayor=line2[i]
+        indice=i
+for i in range(k):
+    mayor*=x
+line2[indice]=mayor
+total=0
+visitados=[]
+for i in line2:
+    if i not in visitados:
+        total+=i
+        visitados.append(i)
+print(total)

@@ -1,0 +1,24 @@
+#include <iostream>
+using namespace std;
+
+int main()
+{
+    int n;
+    cin >> n;
+    long long int ans = 0,c;
+    c=1;
+    while(c<1000000000) c*=2;
+    while(n)
+    {
+        if(c<=n)
+        {
+            ans++;
+            n-=c;
+        }
+        c/=2;
+    }
+    cout << ans << endl;
+
+
+    return 0;
+}

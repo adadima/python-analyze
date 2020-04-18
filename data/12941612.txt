@@ -1,0 +1,24 @@
+n = int(input())
+
+a = [i for i in range(4, n + 1) if i % 2 == 0]
+b = [i for i in range(3, n + 1) if i % 2 != 0]
+
+for i in b:
+    for j in a:
+        if j % i == 0:
+            a[a.index(j)] = 0
+
+c = ['2']
+for i in range(len(b)):
+    if i < len(a) and a[i] != 0:
+        c.append(str(a[i]))
+    c.append(str(b[i]))
+
+if n == 1:
+    print(0)
+elif n == 2:
+    print('{}\n{}'.format(1, 2))
+elif n == 3:
+    print('{}\n{} {}'.format(2, 2, 3))
+else:
+    print('{}\n{}'.format(len(c), ' '.join(c)))

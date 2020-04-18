@@ -1,0 +1,18 @@
+input()
+lis = list(map(int,input().split()))
+bear = lis[0]
+num = 0
+lis1 = lis[1:]
+lis1.sort(reverse=True)
+
+i = 0
+while bear < max(lis1):
+    if lis1[0] >= bear:
+        lis1[i] -= 1
+        num += 1
+        bear += 1
+        lis1.sort(reverse = True)
+    i += 1
+    if i == len(lis1):
+        i = 0    
+print(num)

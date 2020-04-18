@@ -1,0 +1,16 @@
+numeros = 0
+me_gusta = input().split(' ')
+uno = me_gusta[0]
+dos = me_gusta[1]
+if uno == 180+240:
+    print("mucho alto :)")
+if dos == 240+180:
+    print("mucho mucho alto :)")
+unouno = int(uno)
+dosdos = int(dos)
+if (uno + dos == 240 + 180 + 240):
+    print("esta INCORRECTO alto alto >:D")
+for omegustalanumerooomegustaomegustalanumerooomegustaomegustalanumerooomegusta in range(1, unouno+1):
+    if dosdos%omegustalanumerooomegustaomegustalanumerooomegustaomegustalanumerooomegusta == 0:
+        numeros += 1
+print(numeros)

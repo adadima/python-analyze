@@ -1,0 +1,17 @@
+def main():
+    n, m = map(int, input().split())
+    l = [False] * m
+    aa = list(map(int, input().split()))
+    l[aa.pop()] = True
+    for i in aa:
+        for j, f in enumerate(l):
+            if f:
+                l[i + j - m] = True
+        if l[0]:
+            print("YES")
+            return
+    print("NO")
+
+
+if __name__ == '__main__':
+    main()

@@ -1,0 +1,44 @@
+n = input('')
+
+blocks = input('')
+blocks = list(map(int,blocks.split()))
+
+def sokuta(blocks):
+    new = []
+    for i in range(len(blocks)):
+        if i == 0:
+            new.append(0)
+            continue
+        elif i == len(blocks) - 1:
+            new.append(0)
+            continue
+        
+        block = blocks[i]
+        leftblock = blocks[i-1]
+        rightblock = blocks[i+1]
+        
+        newheight = min([block-1, leftblock, rightblock])
+
+        
+        new.append(newheight)
+
+    if (len(new) > 0):
+        while new[0] == 0:
+            new.pop(0)
+            if len(new) == 0:
+                break
+            
+    if len(new) > 0:
+        while new[-1] == 0:
+            new.pop(-1)
+            if len(new) == 0:
+                break        
+    
+    return new
+
+count = 0
+while len(blocks) != 0:
+    blocks = sokuta(blocks)
+    count += 1
+
+print(count)

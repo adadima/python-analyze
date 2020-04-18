@@ -1,0 +1,45 @@
+__author__ = 'dwliv_000'
+import decimal
+s5 = decimal.Decimal(5).sqrt()
+
+def fib(n):
+    SQRT5 = math.sqrt(5)
+    PHI = (SQRT5 + 1) / 2
+    return int(PHI ** n / SQRT5 + 0.5)
+
+(n,m)=(int(i) for i in input().split())
+k=int(input())
+g=[int(i) for i in input().split()]
+j=int(input())
+c={}
+q=0
+for j in range(j):
+    (a,b) = (int(i) for i in input().split())
+    c[a]=b
+    if(a>q):
+        q=a
+if(q%k)==0:
+    f=q
+else:
+    f=(q//k+1)*k
+
+
+if(n==1):
+    print(g[0]%m)
+else:
+    if(n==0):
+        print('0')
+    else:
+        n=n-1
+        if ((n-1)%f) in c:
+            sn=c[(n-1)%f]
+        else:
+            sn=g[(n-1)%f % len(g)]
+        if ((n-2)%f) in c:
+            sn2=c[(n-2)%f]
+        else:
+            sn2=g[(n-2)%f % len(g)]
+        fib1=int(((1+s5)**(n-1)-(1-s5)**(n-1))/(2**(n-1)*s5))
+        fib2=int(((1+s5)**(n-2)-(1-s5)**(n-2))/(2**(n-2)*s5))
+        l2=fib1*sn+fib2*sn2
+        print(l2%m)

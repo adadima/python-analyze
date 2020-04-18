@@ -1,0 +1,33 @@
+#In the name of Allah
+
+from sys import stdin, stdout
+input = stdin.readline
+
+n, m = map(int, input().split())
+
+d = {}
+
+for i in range(m):
+         a, b = input().split()
+
+         try:
+                  d[a].append(b)
+         except KeyError:
+                  d[a] = [b]
+
+         try:
+                  d[b].append(a)
+         except KeyError:
+                  d[b] = [a]
+
+ans = -1
+for i in d:
+         if len(d[i]) < 2:
+                  continue
+         for j in d[i]:
+                  for k in d[i]:
+                           if j != k and k in d[j] and j in d[k]:
+                                    cur = len(d[i]) + len(d[j]) + len(d[k]) - 6
+                                    ans = cur if ans == -1 else min(cur, ans)
+
+stdout.write(str(ans))

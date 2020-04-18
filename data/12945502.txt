@@ -1,0 +1,27 @@
+import math
+n=int(input())
+def prime(n):
+    numbers = set(range(n, 1, -1))
+    primes = []
+    while numbers:
+        p = numbers.pop()
+        primes.append(p)
+        numbers.difference_update(set(range(p*2, n+1, p)))
+    return primes
+s=prime(n)
+i=0
+k=s[i]
+ans=[]
+a=0
+while k<=n and i<len(s):
+    while k<=n:
+        ans.append(k)
+        k*=k
+        a+=1
+        
+    i+=1
+    if i<len(s):
+        k=s[i]
+print(a)        
+for i in ans:
+    print(i,end=' ')

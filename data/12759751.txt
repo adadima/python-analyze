@@ -1,0 +1,41 @@
+def split_seq(seq, sep):
+    start = 0
+    while start < len(seq):
+        try:
+           stop = start + seq[start:].index(sep)
+           yield seq[start:stop]
+           start = stop + 1
+        except ValueError:
+           yield seq[start:]
+           break
+
+def groups(seq):
+    return [i for i in split_seq(seq, 0) if i != []]
+
+n = int(input())
+a = groups([int(i) for i in input().split()])
+
+ans1 = 0
+ans2 = 0
+while True:
+    b = []
+    for i in a:
+        p = min(i)
+        q = max(i)
+        if q - p < 2:
+            ans2 = max(ans2, ans1 + min(q, (len(i)+1)//2))
+        else:
+            w = []
+            i = [0] + i + [0]
+            for j in range(len(i)-2):
+                w.append(min([i[j], i[j+1]-1, i[j+2]]))
+            b += groups(w)
+    ans1 += 1
+    del a
+    a = b
+    if len(a) == 0:
+        break
+if len(a) == 0:
+    print(ans2)
+else:
+    print(ans1)

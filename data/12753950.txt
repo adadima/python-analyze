@@ -1,0 +1,19 @@
+a=int(input())
+strinp=str(input()).split()
+list=[]
+z=int(strinp[0])
+q=0
+for h in range(a):
+    list.append(int(strinp[h]))
+z=list[0]
+list.remove(list[0])
+while z<max(list):
+    z=z+1
+    g=max(list)
+    list[list.index(g)]=list[list.index(g)]-1
+    q=q+1
+c=max(list)
+if(c==z):
+    print(q+1)
+else:
+    print(q)

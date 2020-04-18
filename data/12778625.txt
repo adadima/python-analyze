@@ -1,0 +1,25 @@
+n = int(input())
+
+a = input().split()
+
+
+def max(aa):
+    mi = 1
+    for i in range(n - 1):
+        if int(aa[i + 1]) > int(aa[mi]):
+            mi = i + 1
+    return mi
+
+s = 0
+
+while int(a[0]) <= int(a[max(a)]):
+    s += 1
+    
+    mi = max(a)
+    a[0] = str(int(a[0]) + 1)
+    a[max(a)] = str(int(a[max(a)]) - 1)
+    
+
+    
+
+print(s)

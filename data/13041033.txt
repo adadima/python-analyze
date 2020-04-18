@@ -1,0 +1,10 @@
+n, k, x = map(int, input().split())
+lst = list(map(int, input().split()))
+lst.sort()
+for i in range(k):
+    lst[-1] *= x
+q = set()
+for i in lst:
+    q.add(i)
+print(sum(q))    
+    

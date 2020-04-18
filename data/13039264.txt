@@ -1,0 +1,6 @@
+n = int(input())
+s = ''
+s = bin(n)
+s = s[2:]
+s = s.replace('0', '')
+print(len(s))

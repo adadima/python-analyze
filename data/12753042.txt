@@ -1,0 +1,22 @@
+n = int(input())
+cands= input()
+
+cands = cands.split(" ")
+cands = list(map(int, cands))
+##print(cands)
+
+counter = 0
+
+while cands[0] <= max(cands[1:]):
+    idxMax = cands.index(max(cands[1:]))
+    if cands[0] == max(cands[1:]):
+        cands[0] += 1
+        cands[idxMax] -= 1
+        counter += 1
+        break
+    else:
+        cands[idxMax] -= 1
+        cands[0] += 1
+        counter += 1
+        
+print(counter)

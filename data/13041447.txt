@@ -1,0 +1,19 @@
+from fractions import Fraction
+
+
+def solve(a, b):
+    x = Fraction(b)
+    n = a // (x*2)
+    a_ = a % (x*2)
+    if b > a:
+        return -1
+    if a_ == x:
+        return float(x)
+    if a_ < x:
+        return float((a+b)/(2*n))
+    if a_ > x:
+        return float((a+b)/(2*n+2))
+
+
+a, b = map(Fraction, input().split())
+print(solve(a, b))

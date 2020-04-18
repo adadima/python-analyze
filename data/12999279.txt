@@ -1,0 +1,25 @@
+import sys
+
+def x(point):
+    return point[0]
+
+def y(point):
+    return point[1]
+
+def dist(a, b):
+    return abs(x(a) - x(b)) + abs(y(a) - y(b))
+
+def hamiltonian_path_length(path, points):
+    return sum([dist(points[path[i]], points[path[i+1]])
+                for i in range(0, len(path)-1)])
+
+n      = int(sys.stdin.readline())
+points = [[int(xy) for xy in sys.stdin.readline().split()]
+          for _ in range(n)]
+origin = (0, 0)
+hamiltonian_path = sorted(list(range(0, n)), key=lambda i: dist(origin, points[i]))
+
+# print(hamiltonian_path_length(hamiltonian_path, points))
+for i in hamiltonian_path:
+    print(i, end=' ')
+print()

@@ -1,0 +1,10 @@
+n,k,x=map(int,input().split())
+l=list(map(int,input().split()))
+for j= in range(k):
+  nom=0
+  for i in range(n):
+    if l[nom]*x<l[i]*x: nom=i
+  l[nom]*=x
+s=0
+for x in l: s|=x
+print(s)

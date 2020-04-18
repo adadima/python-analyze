@@ -1,0 +1,17 @@
+n = int(input())
+a = list(map(int, input()))
+
+ans = 0
+
+while True:
+    p = a.find(max(a))
+    
+    if p == 0:
+        break
+    
+    a[p] -= 1
+    a[0] += 1
+    ans += 1
+
+print(ans)
+    

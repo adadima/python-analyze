@@ -1,3 +1,5 @@
 .idea
 data/dump.sql
 .DS_Store
+src/db_cred.py
+__pycache__/

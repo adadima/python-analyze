@@ -1,0 +1,5 @@
+import math
+b = int(input())
+x = math.floor(math.log(b, 2))
+b = b - math.floor(math.pow(2,x))
+print(b+1)

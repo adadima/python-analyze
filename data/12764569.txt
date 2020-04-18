@@ -1,0 +1,22 @@
+n, m = (int(i) for i in input().split())
+uz = [0] * n
+mat = uz[:]
+for i in range(len(mat)):
+ mat[i] = uz[:]
+for i in range(m):
+ k, l = (int(i) - 1 for i in input().split())
+ uz[k] += 1
+ uz[l] += 1
+ mat[k][l] = 1
+ mat[l][k] = 1
+res = n * n
+for i in range(n):
+ for j in range(n):
+  if mat[i][j] != 0:
+   for k in range(n):
+    if mat[j][k] != 0 and k != i and mat[k][i] != 0:
+     res = min(res, uz[i] + uz[j] + uz[k] - 6)
+if res == n * n:
+ print(-1)
+else:
+ print(res)

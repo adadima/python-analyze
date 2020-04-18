@@ -1,0 +1,18 @@
+n, m = [int(i) for i in input().split()]
+x = int(m**0.5)
+i = 1
+ans = 2 if m <= n else 0
+if m%2 == 0:
+    i = 2
+else:
+    i = 3
+while i < min(n, m):
+    if m%i == 0:
+        if m//i <= n:
+            ans += 2
+        else:
+            ans += 0
+    i += 2
+if x*x == m and x <= n:
+    ans -= 1
+print(ans)

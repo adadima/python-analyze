@@ -1,0 +1,27 @@
+def prime(n):
+    i = 2
+    f = True
+    while i * i <= n:
+        if n % i == 0 and f:
+            f = False
+        i += 1
+    return f
+def all_prime(n):
+    result = []
+    for i in range(2, n + 1):
+        if prime(i):
+            result.append(i)
+    return result
+n = int(input())
+array = all_prime(n)
+answer = []
+for i in array:
+    t = 1
+    while i ** t <= n:
+        answer.append(i ** t)
+        t += 1
+if len(answer) == 0:
+    print(0)
+else:
+    print(len(answer))
+    print(*answer)

@@ -1,0 +1,19 @@
+import functools
+n, k, x = list(map(int, input().split()))
+nums = list(map(int, input().split()))
+if k > 1:
+ nums.sort()
+ m = nums[-1]
+ nums[-1] *= x**k
+ print(functools.reduce(lambda x,y: x|y, nums))
+else:
+ or_before = [0] * n
+ or_after = [0] * n
+
+ for i in range(1,n):
+  or_before[i] = or_before[i-1] | nums[i-1]
+ for i in range(n-2, -1, -1):
+  or_after[i] = or_after[i+1] | nums[i+1]
+ # print (or_before, or_after)
+
+ print(max(or_before[i]|or_after[i]|(nums[i]*x**k) for i in range(n)))

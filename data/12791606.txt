@@ -1,0 +1,22 @@
+def indMax(ar):
+    x = -1
+    kk = 0
+    ind = 0
+    for i in ar:
+        kk += 1
+        if x < i:
+            x = i
+            ind = kk
+    return ind
+
+n = int(input())
+ar = list(map(int, input().split()))
+bribes = 0
+ind = indMax(ar)
+while(ar[0] < ar[ind]):
+    print(ar[ind])
+    ar[ind] -= 1
+    ar[0] += 1
+    bribes += 1
+    ind = indMax(ar)
+print(bribes)

@@ -1,0 +1,13 @@
+b=input().split()
+for i in range(len(b)):
+ b[i]=int(b[i])
+ 
+ze=b[0]
+num=b[1]
+counter=0
+for i in range(1,ze+1):
+ b=num/i
+ if(b in range(1,ze+1)):
+  counter+=1
+print(counter)
+  

@@ -1,0 +1,17 @@
+__author__ = 'dwliv_000'
+def isPrime(n):
+    for i in range(2,int(n**0.5)+1):
+        if n%i==0:
+            return False
+
+    return True
+n=int(input())
+z=[]
+for c in range(2,n+1):
+    if(isPrime(c)):
+      for j in range(1,11):
+          if(c**j<=n):
+              z.append(c**j)
+print(len(z))
+for j in range(len(z)):
+    print(z[j],end=' ')

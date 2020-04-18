@@ -1,0 +1,10 @@
+n, count = input(), 0
+votes = [int(x) for x in input().split()]
+hero = votes.pop(0)
+
+while hero <= max(votes):
+ hero += 1
+ count += 1
+ votes[votes.index(max(votes))] -= 1
+
+print(count)

@@ -1,0 +1,37 @@
+__author__ = 'dwliv_000'
+(n,m)=(int(i) for i in input().split())
+k=int(input())
+g=[int(i) for i in input().split()]
+j=int(input())
+c={}
+q=0
+for j in range(j):
+    (a,b) = (int(i) for i in input().split())
+    c[a]=b
+    if(a>q):
+        q=a
+if(q%k)==0:
+    f=q
+else:
+    f=(q//k+1)*k
+d=[]
+for e in range(f):
+    if(e in c):
+        d.append(c[e])
+    else:
+        d.append(g[e%k])
+
+l=0
+l2=1
+
+for j in range(2,n+2):
+    t=l2
+    l2=l2*d[(j-1)%len(d)]+l*d[(j-2)%len(d)]
+    l=t
+if(n==1):
+    b=0
+else:
+    if(n==0):
+        print('0')
+    else:
+        print(l2%m)

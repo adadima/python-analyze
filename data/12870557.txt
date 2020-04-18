@@ -1,0 +1,29 @@
+res = 0
+n = 0
+n = int(input())
+i = 0
+l = []
+g = input()
+z = g.split()
+for i in z:
+    l.append(int(i))
+bear = l[0]
+top = max(l)
+# diff = top - l[0]
+uu = sorted(l)
+if bear == uu[0] & bear > uu[1]:
+    res = 0
+elif bear == uu[0] & bear == uu[1]:
+    res = 1
+else :
+    while l[0] < max(l):
+        top = max(l)
+        for h in range(0,n):
+            if top == max(l):
+                index = h
+            l[0] = l[0] + 1
+            l[index] = l[index] - 1
+
+    res = l[0] - bear
+
+print(res)

@@ -1,0 +1,14 @@
+res = 0
+mod = 1000000007
+n = int(input())
+sum = 0
+plus = 1
+niz = n
+verx = 0
+for i in range(0, n + 1, 1):
+    verx += 1
+    niz += 1
+    plus = plus * niz
+    plus /= verx
+    sum += plus
+print(int(sum) % mod)

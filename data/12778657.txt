@@ -1,0 +1,26 @@
+V, E = tuple(int(i) for i in input().split())
+adjList = [[] for i in range(V)]
+degree = [0 for i in range(V)]
+for i in range(E):
+ u,v = tuple(int(i) for i in input().split())
+ u-=1
+ v-=1
+ adjList[u].append(v)
+ adjList[v].append(u)
+ degree[u]+=1
+ degree[v]+=1
+ 
+ans = -1
+for i in range(V):
+ if(degree[i]<2):
+  continue
+ for n in range(len(adjList[i])):
+  for m in range(n+1,len(adjList[i])):
+   v1 = adjList[i][n]
+   v2 = adjList[i][m]
+   if(not v2 in adjList[v1]):
+    continue
+   cost = max(degree[i]-2,0) + max(degree[v1]-2,0) + max(degree[v2]-2,0) 
+   if(ans == -1 or ans>cost):
+    ans = cost
+print(ans)

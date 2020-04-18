@@ -1,0 +1,13 @@
+lim = int(input())
+a = [int(input()) for i in range(lim)]
+k=0
+s=0
+flag = True
+for i in a[1:]:
+    if i>a[0]:
+        k+=1
+        s+=i-a[0]
+if k==0:
+    print(k)
+else:
+    print(s//k-1)

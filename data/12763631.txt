@@ -1,0 +1,49 @@
+import sys
+
+lines = sys.stdin.read().split("\n")
+# n, k = map(int, lines[0].split(" "))
+# n = int(lines[0])
+# nums = list(map(int, lines[1].split(" ")))
+
+
+n = int(lines[0])
+nums1 = list(map(int, lines[1].split(" ")))
+nums2 = [0] * n
+sp = 0
+ep = n - 1
+nowOn = 1
+
+
+def destroy():
+    global nums1, nums2, nowOn, sp, ep
+    if nowOn == 1:
+        src = nums1
+        tgt = nums2
+    else:
+        src = nums2
+        tgt = nums1
+    f0 = sp
+    l0 = ep
+    for i in range(sp + 1, ep):
+        val = max(0, min(src[i - 1], src[i] - 1, src[i + 1]))
+        tgt[i] = val
+        if val != 0 and f0 == sp:
+            f0 = i - 1
+    for i in range(ep - 1, sp, -1):
+        val = tgt[i]
+        if val != 0 and l0 == ep:
+            l0 = i + 1
+            break
+    if l0 == ep and tgt[ep - 1] == 0:
+        l0 = sp
+    sp = f0 + 1
+    ep = l0 - 1
+    nowOn = 1 - nowOn
+
+count = 0
+while True:
+    if sp > ep:
+        break
+    count += 1
+    destroy()
+print(count)

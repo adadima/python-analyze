@@ -1,0 +1,16 @@
+sequence = [2, 3, 2]
+
+i = 4
+
+while i!=1000:
+    sequence.append(i)
+    i-=2
+    sequence.append(i)
+    i+=3
+
+sequence.append(i)
+sequence.append(i-2)
+
+print(len(sequence))
+for i in sequence:
+    print(i, 1, i, 2)

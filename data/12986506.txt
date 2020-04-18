@@ -1,0 +1,20 @@
+import sys
+import math
+
+def factors(x):
+    for i in range(1, int(math.sqrt(x))+1):
+        if x%i == 0:
+            yield i
+            if x/i != i:
+                yield x/i
+
+(n, x) = map(int, sys.stdin.readline().split())
+
+if n*n < x:
+    print(0)
+    exit()
+
+occurrences = [(row, x/row) for row in filter(lambda f: f <= n, factors(x))
+                            if  x / row <= n]
+
+print(len(occurrences))

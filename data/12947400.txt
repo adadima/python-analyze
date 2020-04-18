@@ -1,0 +1,25 @@
+import math
+n=int(input())
+yes=[]
+g=[]
+half = math.floor(n/2)+1
+for i in range(half,n+1):
+    for j in range(2,half):
+        include=False
+        if i%j==0:
+            if len(g)>0:
+                for k in g:
+                    if j%k==0:
+                        include=True
+                        break
+                if not include:g.append(j)
+            else:
+                g.append(j)
+    if include or len(g)<=1:yes.append(i)
+    g.clear()
+
+print(half-2 + len(yes))
+for i in range(2,half):
+    print(i,end=' ')
+for i in yes:
+    print(i,end=' ')

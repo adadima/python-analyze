@@ -1,0 +1,12 @@
+n, x = map(int, input().split())
+cost = 0
+for l, r in (map(int, input().split()) for _ in range(n)):
+    if l <= x <= r:
+        continue
+    if x < l:
+        cost += l-x
+        x = l
+    if x > r:
+        cost += x-r
+        x = r
+print(cost)

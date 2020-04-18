@@ -1,0 +1,12 @@
+n = int(input())
+n = n*2 + 2
+ans = 1
+for i in range(int(n/2+1),n+1):
+    ans = ans * i
+for i in range(2,int(n/2+1)):
+    ans = int(ans / int(i))
+ans = ans % 1000000007
+ans -= 1
+if ans < 0:
+    ans = ans + 1000000007
+print(int(ans))

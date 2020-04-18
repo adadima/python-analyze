@@ -1,0 +1,19 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <cstring>
+#define SIZE 100003
+using namespace std;
+bool visited[SIZE];
+int main(){
+    memset(visited,0,sizeof(visited));
+    int n,x,counter=0;
+    cin>>n>>x;
+    for(int i=n;i>1;i--)
+        if(x%i==0 && !visited[i]){
+            counter+=2;
+            visited[x/i]=true;
+        }
+    cout<<counter;
+    return 0;
+}

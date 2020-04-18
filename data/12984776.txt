@@ -1,0 +1,33 @@
+#import sys
+from collections import defaultdict
+#sys.stdin = open("python/in", "r")
+
+
+#n = int(input())
+n, m = [int (i) for i in input().split(" ")]
+e = defaultdict(bool)
+rec = {}
+edges = []
+ans = 1000000
+for i in range(n):
+    rec[i] = 0
+
+for i in range(m):
+    a, b = [int (i) -1 for i in input().split(" ")]
+    rec[a] += 1
+    rec[b] += 1
+    e[(b, a)] = True
+    e[(a, b)] = True
+    edges.append((a, b))
+
+for i in edges:
+    a, b = i
+    for j in range(n):
+        if e[(a, j)] and e[(b, j)]:
+            ans = min(ans, rec[a] + rec[b] + rec[j])
+
+if ans == 1000000:
+    print(-1)
+else:
+    print(ans-6)
+    

@@ -1,0 +1,19 @@
+        
+if __name__=='__main__':
+    n = int(input())
+    arr = list(map(int,input().split()))
+    choose = sorted(arr)
+    max_sum = -1
+    numlist =[]
+    numlist = arr
+    for i in range(0,n):
+        min_sum = -1
+        numlist.remove(choose[i])
+        for j in range(1,len(numlist)+1):
+            min_sum += (j*numlist[j-1])
+        if max_sum < min_sum:
+            max_sum = min_sum
+    print(max_sum+1)
+            
+        
+    

@@ -1,0 +1,8 @@
+import time
+n,m,x=map(int,input().split())
+a=list(map(int,input().split()))
+a.sort();o=0
+for i in range(m):a[n-1]*=x
+for i in range(n):o=(o|a[i]);
+print(o)
+#time.sleep(10)

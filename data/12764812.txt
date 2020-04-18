@@ -1,0 +1,22 @@
+(n, m) = (int(i) for i in input().split())
+list=[[] for i in range(n+1)]
+listol = [0] * (n+1)
+for h in range(m):
+    (a, b) = (int(i) for i in input().split())
+    list[a].append(b)
+    list[b].append(a)
+    listol[b]=listol[b]+1
+q=1000000000000
+b=0
+for i in range(1,n):
+    for j in list[i]:
+        for z in list[j-1]:
+                if((z!=j)):
+                  if(i+1 in list[z-1]):
+                        b=1
+                        if(q>len(list[i])-2+len(list[j-1])-2+len(list[z-1])-2):
+                            q=len(list[i])-2+len(list[j-1])-2+len(list[z-1])-2
+if(b==0):
+    print('-1')
+else:
+    print(q)

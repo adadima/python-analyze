@@ -1,0 +1,41 @@
+def check(f,n):
+    k=len(f)
+    i=k-1
+    s=1
+    j=k
+    while i>=0:
+        if f[i]<n-k+i and s==1:
+            f[i]=f[i]+1
+            s=0
+            j=i
+        i=i-1
+    while j<k-1:
+        j=j+1
+        f[j]=f[j-1]+1
+    return f
+def fact(n):
+    a=1
+    s=1
+    while a<=n:
+        s=s*a
+        a=a+1
+    return s
+n,m=map(int,input().split())
+a=list(map(int,input().split()))
+u='NO'
+k=0
+while k<=n:
+    f=list(range(k))
+    h=list(range(k))
+    i=0
+    k2=k
+    while i<(fact(n)/(fact(k2)*fact(n-k2))):
+        while k>0:
+            h[k-1]=a[f[k-1]]
+            k=k-1
+        if sum(h)%m==0:u='YES'
+        i=i+1
+        k=k2
+        f=check(f,n)
+    k=k+1
+print(u)

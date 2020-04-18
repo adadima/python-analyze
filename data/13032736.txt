@@ -1,0 +1,25 @@
+def ha(n):
+    while n>1:
+        if n%2==1:
+            return 0
+        n//=2
+    return n
+n = int(input())
+k = 1
+i = 1
+bac = 1
+if ha(n):
+    k = 0
+while k==1:
+    if(n%(bac+1)==0 and ha(n/(bac+1))):
+        i += 1
+        bac += 1
+        k = 0
+    else:
+        bac *= 2
+print(i)
+        
+       
+       
+       
+    

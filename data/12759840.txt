@@ -1,0 +1,22 @@
+n = int(input())
+a = list(map(int, input().split()))
+b = a[0]
+a = a[1:]
+a.sort()
+a = a[::-1]
+#print(b, a)
+p = 0
+while len(a) > 0:
+    i = 0
+    while True:
+        if i >= len(a): break
+        x = a[i]
+        if x < b: break
+        a[i] -= 1
+        p += 1
+        b += 1
+        a.sort()
+        a = a[::-1]
+    #print(a)
+    if i == 0: break
+print(p)

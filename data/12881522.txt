@@ -1,0 +1,25 @@
+n,m = map(int,input().split())
+mat = []
+od = []
+for i in range(n+1):
+   mat.append([])
+   od.append(0)
+for i in range(m):
+    a,b = map(int,input().split())
+    mat[a].append(b)
+    mat[b].append(a)
+    od[a]+=1
+    od[b]+=1
+minsum = 100000
+for x in range(n):
+    tmpsum=od[x]-2
+    for y in mat[x]:
+        for z in mat[x]:
+            if(y!=z and mat[y].count(z)==1):
+                tmpsum+=od[y]+od[z]-4
+                if(tmpsum<minsum):
+                    minsum=tmpsum
+if(minsum==100000):
+    print("-1")
+else:
+    print(minsum)

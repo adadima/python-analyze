@@ -1,0 +1,21 @@
+import itertools
+import functools
+import operator
+
+
+def dividers(a, b, c):
+    yield b
+    if b != c:
+        b += 1
+        while b * b <= a and a % b != 0:
+            b += 1
+        if b * b <= a:
+            dividers(a, b, a // b)
+        yield c
+
+
+n, x = map(int, input().split())
+
+div = [d for d in dividers(x, 1, x) if d <= n]
+res = [r for r in itertools.permutations(div, 2) if functools.reduce(operator.mul, r, 1) == x]
+print(len(res))

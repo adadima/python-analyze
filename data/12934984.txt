@@ -1,0 +1,24 @@
+from itertools import accumulate, chain,cycle
+def factors(n):
+    def prime_powers(n):
+        for c in accumulate(chain([2,1,2]),chain([2,4])):
+            if c*c>n: break
+            if n%c: continue
+            d,p=(),c
+            while not n%c:
+                n,p,d=n//C,p*C,d+(p,)
+            yield(d)
+        if n>1: yield((n,))
+    r=[1]
+    for e in prime_powers(n):
+        r+=[a*b for a in r for b in e]
+    return r
+n,x=list(int(i) for i in input().split())
+factorsa=factors(x)
+asd=len(factorsa)
+mid=asd//2
+N=0
+while mid<asd and factorsa[mid]<=n:
+    mid+=1
+    N+=1
+print(N*2-asd%2)

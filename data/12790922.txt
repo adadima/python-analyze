@@ -1,0 +1,12 @@
+import math
+n = int(input())
+v = list(map(int , input().split()))
+v[1:]= sorted(v[1:])
+ans=0
+while(v[0]<=v[-1]):
+    #print(v , "last is" , v[-1])
+    v[-1]-=1
+    v[0]+=1
+    ans+=1
+    v[1:]= sorted(v[1:])
+print(ans)

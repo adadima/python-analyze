@@ -1,0 +1,4 @@
+import math
+N=int(input())
+ans=N-int(math.pow(2,int(math.log(N,2))))
+print(ans+1)

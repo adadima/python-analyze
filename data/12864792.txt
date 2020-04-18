@@ -1,0 +1,9 @@
+print('1999')
+a = 1
+b = 999
+for i in range(1000):
+    print(a, 1, a, 2)
+    a += 1
+for i in range(999):
+    print(b, 1, b, 2)
+    b -= 1

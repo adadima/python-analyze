@@ -1,0 +1,24 @@
+n = int(input())
+a = input().split()
+for i in range(len(a)):
+    a[i] = int(a[i])
+ans = 0
+run = True
+a1 = a.copy()
+del a1[0]
+if not (max(a) == a[0] and not a[0] in a1):
+    del a1
+    while run:
+        for i in range(len(a)):
+            if a[i] == max(a):
+                a[i] -= 1
+                a[0] += 1
+                ans += 1
+            a1 = a.copy()
+            del a1[0]
+            if max(a) == a[0] and not a[0] in a1:
+                run = False
+                del a1
+                break
+            del a1
+print(ans)

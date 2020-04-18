@@ -1,0 +1,84 @@
+#include <iostream>
+#include <vector>
+#include <set>
+#include <queue>
+
+using namespace std;
+
+typedef long long ll;
+
+struct State {
+    ll city;
+    ll distance;
+    ll time;
+    ll from;
+
+    State(ll c, ll d, ll t, ll f) : city(c), distance(d), time(t), from(f) { }
+
+    bool operator<(const State &other) const {
+        if (distance < other.distance) return false;
+        if (time < other.time) return false;
+        return true;
+    }
+};
+
+int main() {
+    ll n, m;
+    cin >> n >> m;
+
+    vector<vector<pair<ll, ll>>> edges(n);
+    for (ll i = 0; i < m; ++i) {
+        ll x, y, d;
+        cin >> x >> y >> d;
+
+        edges[x].push_back(pair<ll, ll>(y, d));
+        edges[y].push_back(pair<ll, ll>(x, d));
+    }
+
+    vector<pair<ll, ll>> came_from(n);
+
+    set<ll> used;
+    priority_queue<State> queue;
+    queue.push(State(0, 0, 0, -1));
+
+    while (!queue.empty()) {
+        ll city = queue.top().city;
+        ll dist = queue.top().distance;
+        ll time = queue.top().time;
+        ll from = queue.top().from;
+        queue.pop();
+
+        if (used.find(city) != used.end()) {
+            continue;
+        }
+
+        came_from[city].first = from;
+        came_from[city].second = time;
+        used.insert(city);
+
+        if (city == n - 1) {
+            break;
+        }
+
+        for (pair<ll, ll> edge: edges[city]) {
+            queue.push(State(edge.first, dist + 1, edge.second, city));
+        }
+    }
+
+    vector<ll> cities;
+    ll city = n - 1;
+    while (city != -1) {
+        cities.push_back(city);
+        ll from = came_from[city].first;
+        if (from != -1) cout << came_from[city].second;
+        city = from;
+    }
+    cout << endl;
+
+    cout << cities.size() << endl;
+    for (int i = cities.size() - 1; i >= 0; --i) {
+        cout << cities[i];
+        if (i == 0) cout << endl;
+        else cout << " ";
+    }
+}

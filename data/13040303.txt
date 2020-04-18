@@ -1,0 +1,22 @@
+def get(x, y):
+    if x < 2 * y:
+        return float('inf')
+    p = int(x / y)
+    p -= p % 2
+    return x / p
+    
+
+
+x, y = map(int, input().split())
+if y > x:
+    print(-1)
+else:
+    x1 = x + y
+    x2 = x - y
+    ans1 = get(x1, y)
+    ans2 = get(x2, y)
+    ans = min(ans1, ans2)
+    if ans == float('inf'):
+        print(-1)
+    else:
+        print(ans)

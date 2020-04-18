@@ -1,0 +1,6 @@
+import math
+a = int(input())
+x = math.log(a)//math.log(2)
+y = 2**x
+ans = a-y
+print(int(ans+1))

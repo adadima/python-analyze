@@ -1,0 +1,60 @@
+def extract_min(dist, used):
+    v_min = None
+    for i in range(n):
+        if not used[i] and dist[i] != None  and (v_min == None or dist[i] < dist[v_min]):
+            v_min = i
+    return v_min        
+
+def relax(matrix, v, dist, prev):
+    for i, cost in matrix[v]:
+        if  (dist[i] == None or dist[i] > dist[v] + cost):
+            dist[i] = dist[v] + cost
+            prev[i] = v
+def deikstr(used, dist, prev, st, fin):
+    g = fin
+    ans = []
+    dist[st] = 0
+    while True:
+        v = extract_min(dist, used)
+        if v is None:
+            break
+        used[v] = True
+        relax(matrix, v, dist, prev)    
+    if dist[fin] != None:
+        while fin is not None:
+            ans.append(fin)
+            fin = prev[fin]
+        return  ans, dist[g]             
+    
+    
+
+
+n = int(input())
+ans = 0
+
+matrix = [[] for i in range(n)]
+for i in range(n - 1):
+    a, b, c = map(int, input().split())
+    if c == 0:
+        matrix[a - 1].append([b - 1, 0])
+        matrix[b - 1].append([a - 1, 0])
+    else:
+        matrix[a - 1].append([b - 1, 0])
+        matrix[b - 1].append([a - 1, 1])
+m = int(input())
+lst = list(map(int, input().split()))
+st = 0
+for i in lst:
+    fin = i - 1
+    mas, ans_plus = deikstr([False] * n, [None] * n, [None] * n, st, fin)
+    ans += ans_plus
+    mas.reverse()
+    for i in range(len(mas) - 1):
+        for j in range(len(matrix[i])):
+            if matrix[i][j][0] == mas[i + 1]:
+                matrix[i][j][1] *= 2
+    st = fin
+    
+
+
+        

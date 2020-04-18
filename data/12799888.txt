@@ -1,0 +1,26 @@
+n = int(input())
+votes = [ int(vote) for vote in input().split() ]
+limak = votes[0]
+votes = votes[1:]
+
+votes.sort()
+votes = votes[::-1]
+candies = 0
+index = 0
+while limak <= votes[index]:
+  #print("limak:", limak)
+  #print("votes[", index, "]:", votes[index])
+  candies += 1
+  votes[index] -= 1
+  limak += 1
+
+  if index+1 < n-1:
+    if votes[index+1] > votes[index]:
+      index += 1
+    if votes[0] > votes[index]:
+      index = 0
+  else:
+    if votes[0] > votes[index]:
+      index = 0
+
+print(candies)

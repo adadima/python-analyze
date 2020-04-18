@@ -1,0 +1,12 @@
+count = input()
+full_candidates = [ int(candidate) for candidate in input().split(" ") ]
+
+limak = full_candidates[0]
+bribe = 0
+
+candidates = full_candidates[1:]
+while(max(candidates) >= limak + bribe):
+  candidates[candidates.index(max(candidates))] -= 1
+  bribe += 1
+
+print(bribe)

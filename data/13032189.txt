@@ -1,0 +1,22 @@
+n = int(input())
+
+strs = [list(map(int, input().split())) for _ in range(2*n-1)]
+ans = [-1] * (2*n)
+
+for _ in range(n*(2*n-1)):
+    maxx = -1
+    ii, jj = 0, 0;
+    for i in range(len(strs)):
+        for j in range(len(strs[i])):
+            if maxx < strs[i][j]:
+                maxx = strs[i][j]
+                ii, jj = i, j
+    strs[ii][jj] = -1
+    ii += 1
+
+    if ans[ii] != -1 or ans[jj] != -1:
+        continue
+    ans[ii] = jj+1
+    ans[jj] = ii+1
+
+print(' '.join(map(str, ans)))

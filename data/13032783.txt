@@ -1,0 +1,7 @@
+import math
+d = int(input())
+c = 0
+while(d != 0):
+    d -= 2**int(math.log2(d))
+    c += 1
+print (c)

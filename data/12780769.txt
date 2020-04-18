@@ -1,0 +1,18 @@
+n = int(input())
+
+a = []
+maximum = -1
+for x in input().split():
+    vote = int(x)
+    maximum = max(maximum, vote)
+    a.append(vote)
+
+for bribe in range(0, maximum - a[0] + 2):
+    cnt = a[0] + bribe
+    delta = 0
+    for i in range (1, n):
+        if (a[i] >= cnt):
+            delta += a[i] - cnt + 1
+    if delta <= bribe:
+        print(bribe)
+        break

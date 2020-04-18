@@ -1,0 +1,37 @@
+def F(n):
+    if n==0:
+        return 0
+    if n==1:
+        return 1
+    else:
+        return F(n-1)*S(n-1)+S(n-2)*F(n-2)
+
+
+def S(i):
+    global a,N
+    r=i%N
+    if i<N:
+        
+        return seq[r]
+    else:
+        try:
+            ind=[y[0] for y in a].index(i)
+            return a[ind][1]
+        except:
+            return seq[r]
+            
+        
+        
+        
+K,P = map(int, input().split())
+N=int(input())
+seq=[int(x) for x in input().split()]
+M=int(input())
+
+i=0
+a=[]
+while i<M:
+    j,v = map(int, input().split())
+    a.append((j,v))
+    i+=1
+print(F(K)%P)

@@ -1,0 +1,8 @@
+print("2010")
+for i in range(10):
+    print(str(1)+" "+str(1)+" "+str(1)+" "+str(2))
+count = 1
+while count <= 1000:
+    print(str(count)+" "+str(1)+" "+str(count)+" "+str(2))
+    print(str(count)+" "+str(1)+" "+str(count)+" "+str(2))
+    count += 1

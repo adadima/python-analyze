@@ -1,0 +1,45 @@
+N = int(input())
+roads = []
+for i in range(1, N):
+    inp = input().split();
+    road = []
+    road.append(int(inp[0]));
+    road.append(int(inp[1]));
+    road.append(int(inp[2]));
+    roads.append(road)
+K = int(input())
+target = list(map(lambda x: int(x), input().split()));
+
+totalCost = 0;
+
+start = 1;
+for end in target:
+    if (start == end):
+        continue;
+    costs = [-1] * (N + 1);
+    costs[start] = 0;
+    changes = True;
+    while changes:
+        changes = False;
+        for road in roads:
+            if (costs[road[0]] > -1):
+                if (costs[road[1]] == -1):
+                    costs[road[1]] = costs[road[0]];
+                    changes = True;
+                elif (costs[road[1]] > costs[road[0]]):
+                    costs[road[1]] = costs[road[0]];
+                    changes = True;
+            elif(costs[road[1]] > -1):
+                if (costs[road[0]] == -1):
+                    costs[road[0]] = costs[road[1]] + road[2];
+                    road[2] *= 2;
+                    changes = True;
+                elif (costs[road[0]] > costs[road[1]] + road[2]):
+                    costs[road[0]] = costs[road[1]] + road[2];
+                    road[2] *= 2;
+                    changes = True;
+                    
+    totalCost += costs[end]
+    start = end;
+    
+print(totalCost)

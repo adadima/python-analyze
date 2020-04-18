@@ -1,0 +1,16 @@
+b=int(input())
+x=0
+i=0
+mult=[]
+while x<=1000000000:
+    x=pow(2,i)
+    i+=1
+    mult.append(x)
+restmin=100000000000
+if b in mult:
+    print(1)
+else:
+    for i in mult:
+        if abs(i-b)<restmin:
+            restmin=int(abs(i-b))
+    print(1+restmin)

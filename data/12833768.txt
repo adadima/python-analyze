@@ -1,0 +1,74 @@
+if __name__ =='__main__':
+    n,pairs = map(int,input().split())
+    if pairs == 0:
+        print(-1)
+    else:
+        memo = {}
+        lst = []
+        for i in range(1,n+1):
+            memo[i]=[]
+        for i in range(0,pairs):
+            x,y = map(int,input().split())
+            memo[x].append(y)
+            lst.append(x)
+        '''for key in memo:
+            print(key, memo[key])
+        '''
+        for k in memo:
+            memo[k]=sorted(memo[k])[::-1]
+       
+        dfs = []
+        output = []
+        i = 0
+        while len(memo[lst[i]])==0:
+            i += 1
+        first = lst[i]
+        #print(first)
+        for i in memo[first]:
+            dfs.append(i)
+        output.append(first)
+        #print(dfs)
+        while len(dfs)!=0:
+            #print("dfs",dfs)
+            k = dfs.pop()
+            #print("k",k)
+            if k not in output:
+                output.append(k)
+            if len(memo[k])!=0:
+                for i in memo[k]:
+                    if i not in output:
+                        if i in dfs:
+                            dfs.remove(i)
+                            dfs.append(i)
+                        else:
+                            dfs.append(i)
+        min_cost = 999999
+        for i in range(0,len(output)-3):
+            mylist = [output[i],output[i+1],output[i+2]]
+            cost = 0
+            flag = 0
+            for j in range(i,i+3):
+                #print("j",j)
+                if len(memo[output[j]])==0:
+                    flag = 1
+                    break
+                for k in memo[output[j]]:
+                    if k not in mylist:
+                        cost += 1
+                cost += cost
+            if flag == 0:
+                if min_cost > cost:
+                    min_cost = cost
+        if min_cost == 999999:
+            min_cost = -1
+        print(min_cost)
+            
+
+
+
+
+
+
+
+
+        

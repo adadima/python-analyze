@@ -1,0 +1,23 @@
+#!/bin/python
+
+l = []
+
+temp = input().split()
+a=int(temp[0])
+b=int(temp[1])
+c=int(temp[2])
+
+l = input().split()
+for d in range(len(l)):
+    l[d]=int(l[d])
+
+
+l.sort()
+
+if c != 0:
+    l[-1]=l[-1]*(c**b)
+ans = l[0]
+for d in range(1, a):
+    ans = ans|l[d]
+    
+print(ans)

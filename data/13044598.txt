@@ -1,0 +1,12 @@
+a,b=input().split()
+a=int(a)
+b=int(b)
+if a<b:
+    print(-1)
+elif a==b:
+    print(a)
+else:
+    x=float(b)+(a-b)/2
+    while (x/2>b)or(abs(b-x/2)<1e-15):
+        x=x/2
+    print(x)

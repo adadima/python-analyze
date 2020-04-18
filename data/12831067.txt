@@ -1,0 +1,21 @@
+if __name__=='__main__':
+    t = int(input())
+    voters = list(map(int,input().split()))
+    j = max(voters)
+    if voters.index(j)==0 and voters.count(j)==1:
+        print(0)
+    else:
+        k = voters.count(j)
+        first = voters[0]
+        voters.remove(first)
+        count = 0
+        while max(voters)>=first:
+            j = max(voters)
+            p = voters.index(j)
+            first += 1
+            voters[p] -= 1
+            count += 1
+        print(count)
+        
+        
+        

@@ -1,0 +1,27 @@
+n,m = map(int,input().split())
+mat = []
+d2 = []
+od = []
+for i in range(n):
+   mat.append([])
+   d2.append([0 for i in range(n)])
+   od.append(0)
+for i in range(m):
+    a,b = map(int,input().split())
+    mat[a-1].append(b-1)
+    mat[b-1].append(a-1)
+    d2[a-1][b-1]=d2[b-1][a-1]=1
+    od[a-1]+=1
+    od[b-1]+=1
+minsum = 1000000
+for x in range(n):
+    for y in mat[x]:
+        for z in mat[y]:
+            if(d2[z][x]==1):
+                tmpsum=od[x]+od[y]+od[z]
+                if(tmpsum<minsum):
+                    minsum=tmpsum
+if(minsum==1000000):
+    print("-1")
+else:
+    print(minsum-6)

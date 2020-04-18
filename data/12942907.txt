@@ -1,0 +1,21 @@
+b=input().split()
+s=int(b[0])
+num=int(b[1])
+b=input().split()
+for i in range(len(b)):
+ b[i]=int(b[i])
+counter=0
+for i in range(len(b)):
+ sum=b[i]
+ j=i
+ while(sum%num!=0 and j<len(b)-1):
+  j+=1
+  sum=sum+b[j]
+ if(sum%num==0):
+  counter+=1
+  break
+
+if(counter):
+ print("YES")
+else:
+ print("NO")

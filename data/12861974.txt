@@ -1,0 +1,15 @@
+#include <iostream>
+#include <stdlib.h>
+#include <time.h>
+
+using namespace std;
+
+int main()
+{
+ ios::sync_with_stdio(false);
+ srand(time(0));
+ cout << 2015 << endl;
+ for(int i = 1; i <= 2015; i++)
+ { cout << i << " 1 " << i << " 2" << endl; }
+ return 0;
+}

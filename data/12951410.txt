@@ -1,0 +1,17 @@
+import sys
+input = sys.stdin.readline
+n,m = map(int,input().split())
+mark = [0 for i in range(m)]
+a = list(map(int,input().split()))
+for x in a:
+    tmp = []
+    for i in range(m):
+        if(mark[i]==1):
+            tmp.append((i+x%m)%m)
+    for t in tmp:
+        mark[t]=1
+    mark[x%m]=1
+if(mark[0]==1):
+    print("YES")
+else:
+    print("NO")

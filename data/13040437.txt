@@ -1,0 +1,11 @@
+a, b = [int(i) for i in input().split()]
+temp = min(a, b)
+s = abs(b+a)
+d = abs(b-a)
+while d/2 >= temp:
+    d /= 2
+if s/4 >= temp:
+    s /= 4
+while s/2 >= temp:
+    s /= 2
+print(min(s, d))

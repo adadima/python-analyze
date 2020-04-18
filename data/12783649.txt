@@ -1,0 +1,14 @@
+n = int(input())
+numbers = list(map(int, input().split(' ')))
+
+count = 0
+while any(numbers):
+    new = numbers[:]
+    for i in range(n):
+        if 1 < i < n - 1:
+           new[i] = max(0, min(numbers[i - 1], numbers[i + 1], numbers[i] - 1))
+        else:
+            new[i] = 0
+    numbers = new
+    count += 1
+print(count)

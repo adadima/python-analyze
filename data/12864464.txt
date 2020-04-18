@@ -1,0 +1,6 @@
+print('1000')
+a = 1
+for i in range(500):
+    print(a, 1, a, 2)
+    print(1000 - a + 1, 1, 1000 - a + 1, 2)
+    a += 1

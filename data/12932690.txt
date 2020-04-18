@@ -1,0 +1,10 @@
+b = set()
+n, m = map(int, input().split())
+for i in list(map(int, input().split())):
+    for s in list(b):
+        b.add((i + s) % m)
+    b.add((i - 1) % m)
+if m - 1 in b:
+    print("YES")
+else:
+    print("NO")

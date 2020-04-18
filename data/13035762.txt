@@ -1,0 +1,14 @@
+a, b = map(int, input().split())
+if a < b:
+    print(-1)
+else:
+    u = a + b
+    k = u // (b+b)
+    ans = u / (k+k)
+    u = a - b
+    k = u // (b+b)
+    ans = min(ans, u / (k+k))
+    print(ans)
+    
+    
+    

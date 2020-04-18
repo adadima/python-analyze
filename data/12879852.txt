@@ -1,0 +1,17 @@
+from collections import defaultdict
+
+if __name__ == '__main__':
+    n, m = map(int, input().split())
+    g = defaultdict(list)
+    for _ in range(m):
+        a,b = map(int, input().split())
+        g[a].append(b)
+        g[b].append(a)
+    
+    best = float("Inf")
+    for i in g.keys():
+        for j in g[i]:
+            for k in g[j]:
+                if k in g[i]:
+                    best = min(best, len(g[i]) + len(g[j]) + len(g[k]) - 6)
+    print(best if best != float("Inf") else -1)

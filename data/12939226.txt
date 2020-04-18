@@ -1,0 +1,26 @@
+Getal = int(input())
+GetallenLijst = []
+x = 2
+
+while x <= Getal:
+    if Getal % x == 0:
+        GetallenLijst.append(x)
+        x += 2
+    else:
+        GetallenLijst.append(x)
+        break
+
+
+x = 3
+
+while x <= Getal:
+    if Getal % x == 0:
+        GetallenLijst.append(x)
+        x += 2
+    else:
+        GetallenLijst.append(x)
+        break
+
+print (len(GetallenLijst))
+for nummer in GetallenLijst:
+    print (nummer, end=" ")

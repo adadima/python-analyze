@@ -1,0 +1,18 @@
+m = 1
+def rest(a):
+    return int(a) % m
+
+n, m = map(int, input().split())
+arr = list(map(rest, input().split()))
+F = [[0 for i in range(m)]] + [[0 for i in range(m)]]
+F[0][arr[0]] = F[1][arr[0]] = 1
+ans = "NO"
+for i in range(1, n):
+    F[0][arr[i]] = F[1][arr[i]] = 1
+    for j in range(m):
+        F[1][(arr[i] + j) % m] = max(F[0][j], F[0][(arr[i] + j) % m])
+    for j in range(m):
+        F[0][j] = F[1][j]
+if F[0][0]:
+    ans = "YES"
+print(ans)

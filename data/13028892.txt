@@ -1,0 +1,6 @@
+import math
+n=int(input())
+
+p=int(math.log2(n))
+q=n-2**p
+print(q+1)

@@ -1,0 +1,29 @@
+(n,m) = (int(i) for i in input().split())
+
+c=[]*(n+1)
+for i in range(1,n+1):
+    c.append([])
+g=[]
+b=[0]*(n+1)
+q=10000000
+for j in range(m):
+    (a,g) = (int(i) for i in input().split())
+
+    c[a-1].append(g)
+    c[g-1].append(a)
+    b[a]=b[a]+1
+    b[g]=b[g]+1
+
+for first in range(1,n+1):
+    for second in c[first-1]:
+        if(first>second):
+            for third in c[second-1]:
+                if(third in c[first-1])and(third!=first)and(second>third):
+                    if(q>b[third]+b[second]+b[first]-6):
+                     q=b[third]+b[second]+b[first]-6
+
+
+if(q==10000000):
+    print(-1)
+else:
+    print(q)

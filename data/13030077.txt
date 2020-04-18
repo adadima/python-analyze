@@ -1,0 +1,12 @@
+import math
+x=int(input());
+s=0;
+while x>0:
+    l=math.log2(x)
+    if int(l)==l:
+        s+=1;
+        x=0;
+    else:
+        x=x-2**int(l);
+        s+=1;
+print(s);

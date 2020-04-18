@@ -1,0 +1,35 @@
+n,m = input().split()
+n=int(n)
+m=int(m)
+l=input().split()
+s,x=0,0
+for i in range(n):
+    l[i]=int(l[i])%m
+for i in range(n):
+    if(l[i]==0):
+        x+=1
+    s+=l[i]%m
+    l[i]=s%m
+flag=0
+#print(l)
+if(x>0):
+    flag=1
+else:
+    for i in range(n-1):
+        if(l[i+1]==0):
+            flag=1
+            break
+        for j in range(i+1,n):
+            r=(l[j]-l[i])
+            if((r!=0) and r%m==0):
+                flag=1
+                break
+            elif(((s-r)!=0) and (s-r)%m==0):
+                flag=1
+                break
+        if(flag):
+            break
+if(flag):
+    print("YES")
+else:
+    print("NO")

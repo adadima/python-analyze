@@ -1,0 +1,32 @@
+n = int(input())
+arr = list(map(int, input().split()))
+cond = []
+max1 = arr[1]
+lam = arr[0]
+for i in range(1, n):
+    if arr[i] >= lam:
+        if arr[i] > max1:
+            max1 = arr[i]
+            cond.reverse()
+            cond.append(max1)
+            cond.reverse()
+        else:
+            cond.append(arr[i])
+ans = 0
+while cond:
+    cond[0] -= 1
+    ans += 1
+    lam += 1
+    cond1 = []
+    max1 = cond[0]
+    for i in range(len(cond)):
+        if cond[i] >= lam:
+            if cond[i] > max1:
+                max1 = cond[i]
+                cond1.reverse()
+                cond1.append(max1)
+                cond1.reverse()
+            else:
+                cond1.append(cond[i])
+    cond = cond1
+print(ans)

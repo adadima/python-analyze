@@ -1,0 +1,12 @@
+n, x = map(int, input().split())
+cnt = 0
+for i in range(1, n+1):
+    if i * i > x: break
+    j = x // i
+    if i * j != x:
+        continue
+    if i == j:
+        cnt += 1
+    elif j <= n:
+        cnt += 2
+print(cnt)

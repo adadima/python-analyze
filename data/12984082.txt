@@ -1,0 +1,17 @@
+import heapq
+N = int(input())
+s = input().split(' ')
+a = [-int(x) for x in s[1:]]
+me = int(s[0])
+
+heapq.heapify(a)
+ans = 0
+
+while me <= -a[0]:
+ x = -heapq.heappop(a)
+ x -= 1
+ me += 1
+ ans += 1
+ heapq.heappush(a,-x)
+
+print(ans)

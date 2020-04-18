@@ -1,0 +1,35 @@
+import itertools
+import math
+
+def giveMeDivsor(num):
+ i = num
+ alist = []
+ while i>0:
+  if num%i==0:
+   alist.append(i)
+  i -= 1
+ temp = math.sqrt(num)
+ if temp == int(temp):
+  alist.append(int(temp))
+ return alist
+
+def hasSQRT(num):
+ temp = math.sqrt(num)
+ if temp == int(temp):
+  return True
+ return False
+
+m = input().split()
+n = int(m[0])
+num  = int(m[1])
+
+alist = giveMeDivsor(num)
+# print(alist)
+x = itertools.permutations(alist, 2)
+count = 0
+for i in x:
+ if ((i[0] * i[1]) == num) and (i[0] <= n) and (i[1] <= n):
+  count += 1
+if hasSQRT(num):
+ count -= 1
+print(count)

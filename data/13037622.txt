@@ -1,0 +1,22 @@
+a, b = map(int, input().split())
+EPS = 10 ** -10
+if (b > a):
+    print(-1)
+    exit()
+
+left = 0
+right = b
+while(right - left > EPS):
+    z = (right + left) / 2
+    if ((a % 2 * z) < z):
+        if (b >= a % z):
+            right = z
+        elif (b < a % z):
+            leftt = z
+    else:
+        if (b >= z - a % z):
+            right = z
+        elif (b < z - a % z):
+            leftt = z
+
+print("%.9f" % right)

@@ -1,0 +1,8 @@
+import math
+
+def ncr(n, r):
+    return int(math.factorial(n) // (math.factorial(r) * math.factorial(n - r)))
+
+n = int(input())
+
+print((ncr(2 * (n + 1), n + 1) - 1) % (10**9 + 7))

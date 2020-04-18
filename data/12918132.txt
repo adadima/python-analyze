@@ -1,0 +1,10 @@
+# not my code, just for test issues
+print(2000)
+for i in range (999):
+ print(str(i + 1) + ' ' + str(1) + ' ' + str(i + 1) + ' ' + str(2))
+i = 998
+print(str(i + 1) + ' ' + str(1) + ' ' + str(i + 1) + ' ' + str(2))
+for i in range(998):
+ print(str(999 - i) + ' ' + str(1) + ' ' + str(999 - i) + ' ' + str(2))
+i = 1
+print(str(i + 1) + ' ' + str(1) + ' ' + str(i + 1) + ' ' + str(2))

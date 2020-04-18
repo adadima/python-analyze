@@ -1,0 +1,11 @@
+__author__ = 'Rakshak.R.Hegde'
+"""
+Created on Sep 16 2015 8:47 PM
+
+@author: Rakshak.R.Hegde
+"""
+
+from math import *
+
+x = int(input())
+print(1 + x - 2 ** int(log2(x)))

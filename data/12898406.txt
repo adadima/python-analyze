@@ -1,0 +1,21 @@
+n = (int)(input())
+h = [0]+list(map(int,input().split()))+[0]
+dp = []
+for i in range(n):
+    Val=h[i]
+    j=0
+    while(j<=Val):
+        Val=min(Val,h[i-j]+j)
+        j+=1
+    dp.append(Val)
+for i in range(n):
+    Val=h[i]
+    j=0
+    while(j<=Val):
+        Val=min(Val,h[i+j]+j)
+        j+=1
+    dp[i]=min(dp[i],Val)
+mx=-1
+for i in range(n):
+    mx=max(mx,dp[i])
+print(mx)
