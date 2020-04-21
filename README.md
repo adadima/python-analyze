@@ -58,14 +58,19 @@ Setting these up can be a little painful and time consuming. Wade through it. Fo
 ## How to:
 
 In order to use this refactoring tool, follow these steps:
-    1. Use the environment .yml file in order to recreate the conda environment
-    2. Activate the env you created at step 1
-    3. Run script `refactor.py` with two command line arguments: `path_to_input` and `path_to_output`
-        These should be absolute paths to the source code file, and to the file where the modified version 
-        should be written, respectively. For example, to convert all function calls to foo from
-        the source `home/adadima/source_code.py` to `home/adadima/foo_code.py`, run: 
+
+1. Use the environment .yml file in order to recreate the conda environment
+    
+2. Activate the env you created at step 1
+    
+3. Run script `refactor.py` with two command line arguments: `path_to_input` and `path_to_output`
+    These should be absolute paths to the source code file, and to the file where the modified version 
+    should be written, respectively. For example, to convert all function calls to foo from
+    the source `home/adadima/source_code.py` to `home/adadima/foo_code.py`, run: 
         
         python3 ./src/refactor.py home/adadima/source_code.py home/adadima/foo_code.py
+        
+4. You can run `tests/test.py` for additional tests
 
 ## Edge cases and challenges:
 
