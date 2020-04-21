@@ -50,14 +50,16 @@ def convert(replacer, path_to_input, path_to_output):
     """
     ast_ = get_ast(path_to_input)
     call_locations = CallFinder().visit(ast_)
+
     lineno_to_calls = {}
     for call_loc in sorted(call_locations):
         lineno_to_calls.setdefault(call_loc[0], []).append(call_loc)
-    # print(sorted(call_locations))
+
     new_lines = replace_calls(replacer,
                               lineno_to_calls,
                               sorted(lineno_to_calls.keys()),
                               readLines(path_to_input))
+
     writeLines(new_lines, path_to_output)
 
 
@@ -138,23 +140,38 @@ def replace_calls(replacer, locations, start_locations, source_lines):
 
 
 def span_call(line_idx, call_locations, source_lines, replacer):
+    """
+    Takes in a line index and returns a string representing a new line
+    in which all the function calls that initially started on `line_idx`
+    are replaced with the value of `replacer`
+    :param line_idx: the index of the line to modify
+    :param call_locations: a list of tuples, represents the line/column bounds
+                           of all function calls that start on `line_idx`
+    :param source_lines:  a list of all the lines in the source code
+    :param replacer: the string to repalce all function calls with
+    :return: A string representing the line with all the function calls
+            starting at line `line_idx` converted to calls to `replacer`
+    """
     line = source_lines[line_idx]
     new_line = []
+
     get_bounds = lambda loc: (loc[1], loc[3]) if loc[0] == loc[2] else (loc[1], len(line))
     bounds = [get_bounds(location) for location in call_locations]
     in_bounds = lambda index: any(bound[0] <= index < bound[1] for bound in bounds)
     add_replacer = False
+
     for index, char in enumerate(line):
-        # print("New line: ", new_line)
         if not in_bounds(index):
             add_replacer = True
             new_line.append(char)
         elif add_replacer:
             new_line.append(replacer)
             add_replacer = False
+
     line1, col1, line2, col2 = call_locations[-1]
     if line1 != line2:
         new_line.append(source_lines[line2 - 1][col2:])
+
     return "".join(new_line), line2 + 1
 
 
