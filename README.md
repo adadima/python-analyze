@@ -101,16 +101,24 @@ The reason why a good soultion uses an Abstract Syntax Tree intermediary rather 
     ```python
     func1(func2(func3(func4(1))))
     ```
-    This should become ```python foo(foo(foo(foo(1))))```
+    This should become 
+    ```python 
+    foo(foo(foo(foo(1))))
+    ```
     
 - chained function calls:
     ```python
     func1()()()(3)
     ```
-    This becomes ```python foo(3)```
+    This becomes 
+    ```python 
+    foo(3)
+    ```
     
 - class constructors:
-    ```python Point(x, y, z)``` => ```foo(x, y, z)```
+    ```python 
+    Point(x, y, z)``` => ```foo(x, y, z)
+    ```
 
 Below are two assumptions that the current implementation makes:
 
