@@ -107,10 +107,16 @@ The reason why a good soultion uses an Abstract Syntax Tree intermediary rather 
 - class constructors:
     ```python Point(x, y, z)``` => ```foo(x, y, z)```
 
+Below are two assumptions that the current implementation makes:
+
+- object instantiation through access to the class constructor IS considered a function call
+- class methods and class attributes ARE NOT considered function calls
+
 ## Statistics about code submissions:
 
 ## Evaluation:
 
+One solution is to run the refactoring script on large submission data sets, obtain the AST of the modified code, and traverse it in order to verify that for every `Call` node, its `func` child is just a node of type `Name` and identifier `foo`. This is in fact implemented in the large test case from `tests/test.py`. However, it may very well be that this strategy overlooks certain situations. 
 
 ## Source code data:
 
