@@ -119,6 +119,26 @@ Below are two assumptions that the current implementation makes:
 
 ## Statistics about code submissions:
 
+Below are some statistics about the total number of submissions, the maximum 
+number of lines of code, the average number of lines of code, and number of
+compiling submissions for Python vs. Other languages. 
+
+Max and Avg number of lines of code is an important metric because it helps 
+with setting a performance standard for the refactoring script. The averge 
+Python submission will have less than 25 LOC, which means that the even an 
+asymptotic complexity of O(N^2) for the refactorign script would be reasonable
+for our purposes. 
+
+It's also important to know how many Python submissions don't have any syntax errors, 
+as only those will be used for testing. This is because the solution is going through
+an intermediary AST, and prodcuing such an AST is impossible if the code can not be
+interpreted.
+
+|   | Language | Total  | MAX_LOC | AVG_LOC | Can Compile |
+|---|----------|--------|---------|---------|-------------|
+|   | Python   | 3200   | 322     | ~24     | 3105        |
+|   | Others   | 270505 | 1063    | ~65     | 260896      |
+    
 ## Evaluation:
 
 One solution is to run the refactoring script on large submission data sets, obtain the AST of the modified code, and traverse it in order to verify that for every `Call` node, its `func` child is just a node of type `Name` and identifier `foo`. This is in fact implemented in the large test case from `tests/test.py`. However, it may very well be that this strategy overlooks certain situations. 
