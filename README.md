@@ -54,6 +54,64 @@ Setting these up can be a little painful and time consuming. Wade through it. Fo
 - Assess how you wiggle out of situations when you're stuck.
 - Assess how well you communicate and let all stakeholders know of your progress.
 
+
+## How to:
+
+In order to use this refactoring tool, follow these steps:
+    1. Use the environment .yml file in order to recreate the conda environment
+    2. Activate the env you created at step 1
+    3. Run script `refactor.py` with two command line arguments: `path_to_input` and `path_to_output`
+        These should be absolute paths to the source code file, and to the file where the modified version 
+        should be written, respectively. For example, to convert all function calls to foo from
+        the source `home/adadima/source_code.py` to `home/adadima/foo_code.py`, run: 
+        
+        python3 ./src/refactor.py home/adadima/source_code.py home/adadima/foo_code.py
+
+## Edge cases and challenges:
+
+The reason why a good soultion uses an Abstract Syntax Tree intermediary rather than regex lookup is because a lot of different python structures can have the syntax of expr(...). Among these there are functions calls, function definitions and class methods. An AST can distinguish between functions, function defintions and class attributes, so obtaining and traversing the AST should be enough to obtain the locations ( line and column ) of all true function calls in the code. Once the locations of all function calls are known, one approach is to regenerate the source code but making sure that `foo` is inserted at those locations. This second step poses several challenges/edge cases:
+
+- multiple function calls on the same line
+- a function call that spans several lines:
+   
+    ```python      
+    (lambda
+            x,
+            y,
+            z:  x +
+                y +
+                z )(1, 2, 3)
+    ```
+    Or
+    ```python
+    a[
+        sum(
+            [1, 2]
+            )
+        ](16)
+    ```
+    These two examples should become: ```python (foo)(1, 2, 3)``` and ```python foo(16)```
+    
+- nested function calls:
+    ```python
+    func1(func2(func3(func4(1))))
+    ```
+    This should become ```python foo(foo(foo(foo(1))))```
+    
+- chained function calls:
+    ```python
+    func1()()()(3)
+    ```
+    This becomes ```python foo(3)```
+    
+- class constructors:
+    ```python Point(x, y, z)``` => ```foo(x, y, z)```
+
+## Statistics about code submissions:
+
+## Evaluation:
+
+
 ## Source code data:
 
 Python source codes have been retrieved from here: https://www.itshared.org/2015/12/codeforces-submissions-dataset-for.html
@@ -67,3 +125,5 @@ To run the data filter script, you will need to first set up MySQL on your syste
  - a 'PASSWORD' global variable, also as a string, which is the password associated with the above user
  
 This information will be imported by the data filter script in order to connect to your local database.
+
+
