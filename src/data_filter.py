@@ -36,6 +36,31 @@ def query(db_name, sql_query):
 # results will be of the form (sub_id, source string, status, language, problem id/name)
 
 
+def get_info(submissions):
+    max_LOC = None
+    sum_LOC = 0
+    total = 0
+    compiles = 0
+
+    for result in submissions:
+        submission_id, source_code, status, language, problem = result
+        if "Compilation error" not in status:
+            compiles += 1
+        LOC = len(source_code.split("\n"))
+        sum_LOC += LOC
+        total += 1
+        if max_LOC is None or max_LOC < LOC:
+            max_LOC = LOC
+
+    return max_LOC, sum_LOC / total, compiles, total
+
+def stats():
+    max_LOC_Python, avg_LOC_Python, can_compile_Python, total_Python = get_info(query("sources", "SELECT * FROM submissions WHERE language=\"Python 3\";"))
+    max_LOC_Other, avg_LOC_Other, can_compile_Others, total_Others = get_info(query("sources", "SELECT * FROM submissions WHERE language!=\"Python 3\";"))
+
+    print(f"Python MAX_LOC, AVG_LOC, CAN_COMPILE, TOTAL: ", max_LOC_Python, avg_LOC_Python, can_compile_Python, total_Python)
+    print("Other MAX_LOC, AVG_LOC, CAN_COMPILE, TOTAL: ", max_LOC_Other, avg_LOC_Other, can_compile_Others, total_Others)
+
 def get_source_code(db_name, sql_query):
     """
     Create submission files for all the source codes returned
@@ -55,4 +80,5 @@ def get_source_code(db_name, sql_query):
 
 
 if __name__ == '__main__':
-    get_source_code("sources", "SELECT * FROM submissions WHERE language=\"Python 3\" LIMIT 1000;")
+    # get_source_code("sources", "SELECT * FROM submissions WHERE language=\"Python 3\" LIMIT 1000;")
+    stats()
