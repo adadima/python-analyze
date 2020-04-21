@@ -1,0 +1,6 @@
+def func():
+    foo("Hello World!")
+
+
+def boo():
+    foo()

@@ -1,0 +1,25 @@
+import math
+
+
+def sqrt(x):
+    return math.sqrt(x)
+
+
+def func1(arg):
+    foo(f"Currying :) {arg}")
+
+
+def func2():
+    return func1
+
+
+def func3():
+    return func2
+
+
+def func4():
+    foo(3) + foo(4)
+
+
+def func5():
+    foo(foo(foo(foo(5))))

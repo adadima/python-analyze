@@ -1,3 +1,4 @@
+import sys
 from ast import *
 
 
@@ -26,12 +27,18 @@ class CallFinder(NodeVisitor):
         return call_locations
 
     def visit_Call(self, node):
-        func = node.func
-        child_values = self.generic_visit(node)
+        (_, func), (_, args), (_, kwargs) = iter_fields(node)
+        all_calls = []
+        for arg in args + kwargs:
+            all_calls += self.visit(arg)
         call_location = (func.lineno, func.col_offset, func.end_lineno, func.end_col_offset)
-        if isinstance(func, Attribute):
-            return child_values
-        return [call_location] + child_values
+        if not isinstance(func, Attribute):
+            all_calls.append(call_location)
+
+        if not isinstance(func, Call):
+            all_calls += self.visit(func)
+
+        return all_calls
 
 
 def convert(replacer, path_to_input, path_to_output):
@@ -46,7 +53,7 @@ def convert(replacer, path_to_input, path_to_output):
     lineno_to_calls = {}
     for call_loc in sorted(call_locations):
         lineno_to_calls.setdefault(call_loc[0], []).append(call_loc)
-
+    # print(sorted(call_locations))
     new_lines = replace_calls(replacer,
                               lineno_to_calls,
                               sorted(lineno_to_calls.keys()),
@@ -104,6 +111,8 @@ def replace_calls(replacer, locations, start_locations, source_lines):
     :param source_lines: a list containing all lines in the source file ( as strings )
     :return: a list containing all lines in the modified source file ( as strings )
     """
+    if not start_locations and not locations:
+        return source_lines.copy()
     new_lines = []
     next_call_idx = 0
     next_line_with_call = start_locations[0]
@@ -114,8 +123,9 @@ def replace_calls(replacer, locations, start_locations, source_lines):
             new_lines.append(source_lines[line_idx - 1])
             line_idx += 1
         else:
+            calls_on_line = locations[next_line_with_call]
             new_line, line_idx = span_call(line_idx - 1,
-                                        locations[next_line_with_call],
+                                        calls_on_line,
                                         source_lines,
                                         replacer)
             new_lines.append(new_line)
@@ -128,38 +138,26 @@ def replace_calls(replacer, locations, start_locations, source_lines):
 
 
 def span_call(line_idx, call_locations, source_lines, replacer):
-    """
-    Takes in a line index and returns a string representing a new line
-    in which all the function calls that initially started on `line_idx`
-    are replaced with the value of `replacer`
-
-    :param line_idx: the index of the line to modify
-    :param call_locations: a list of tuples, represents the line/column bounds
-                           of all function calls that start on `line_idx`
-    :param source_lines:  a list of all the lines in the source code
-    :param replacer: the string to repalce all function calls with
-    :return: A string representing the line with all the function calls
-            starting at line `line_idx` converted to calls to `replacer`
-    """
-    current_line = source_lines[line_idx]
+    line = source_lines[line_idx]
     new_line = []
-    remaining = current_line
-
-    for i, loc in enumerate(call_locations):
-        line1, col1, line2, col2 = loc
-        if line1 != line2:
+    get_bounds = lambda loc: (loc[1], loc[3]) if loc[0] == loc[2] else (loc[1], len(line))
+    bounds = [get_bounds(location) for location in call_locations]
+    in_bounds = lambda index: any(bound[0] <= index < bound[1] for bound in bounds)
+    add_replacer = False
+    for index, char in enumerate(line):
+        # print("New line: ", new_line)
+        if not in_bounds(index):
+            add_replacer = True
+            new_line.append(char)
+        elif add_replacer:
             new_line.append(replacer)
-            new_line.append(source_lines[line2][col2:])
-            break
-        separator = current_line[col1:col2]
-        to_keep, fn, remaining = remaining.partition(separator)
-        new_line.append(to_keep)
-        if remaining:
-            new_line.append(replacer)
-    else:
-        new_line.append(remaining)
-    return "".join(new_line), call_locations[-1][2] + 1
+            add_replacer = False
+    line1, col1, line2, col2 = call_locations[-1]
+    if line1 != line2:
+        new_line.append(source_lines[line2 - 1][col2:])
+    return "".join(new_line), line2 + 1
 
 
 if __name__=='__main__':
-    convert('foo', '../data/12749338.txt', './new_code.txt')
+    input_file, output_file = sys.argv[1], sys.argv[2]
+    convert('foo', input_file, output_file)

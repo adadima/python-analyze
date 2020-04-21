@@ -1,0 +1,4 @@
+import math
+
+
+[foo(f"Hi perfect square! {i}") for i in foo(10) if foo(foo(i)*foo(i)) == i]
